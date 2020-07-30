@@ -26,7 +26,7 @@ calcolato, tramite la coda di messaggi di risposta (da gestire in
 **mutua esclusione**); dopodiché il thread termina. Quando il Server
 riceve il messaggio con la coppia di valori {-1,-1}, termina.
 
-![image](/ambiente_locale/server_multithread/un_primo_esempio_di_server_multithread/un_primo_esempio_di_server_multithread.pdf){width="\\textwidth"}
+![image](/ambiente_locale/server_multithread/un_primo_esempio_di_server_multithread/un_primo_esempio_di_server_multithread.png){width="\\textwidth"}
 
 **Soluzione**
 
