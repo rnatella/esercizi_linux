@@ -8,7 +8,7 @@ consumatore, ed un ulteriore processo denominato **iniettore**.
 
 I produttori dovranno produrre all'interno di un buffer singolo, che
 dovrà contenere una struttura con due campi: un vettore di caratteri, e
-un valore intero. Ciascun produttore dovrà inserire<sup>[1](#footnote1)</sup> nel vettore di
+un valore intero. Ciascun produttore dovrà inserire<sup>[\[1\]](#footnote1)</sup> nel vettore di
 caratteri rispettivamente le stringhe "MSG1", "MSG2", "MSG3" (ripetendo
 la stessa stringa in tutte le produzioni dello stesso produttore); e
 inserire nel campo intero la lunghezza della stringa (in questo caso, il
