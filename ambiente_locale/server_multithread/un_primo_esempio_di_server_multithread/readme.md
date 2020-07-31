@@ -28,7 +28,7 @@ riceve il messaggio con la coppia di valori {-1,-1}, termina.
 
 ![image](/images/ambiente_locale/server_multithread/un_primo_esempio_di_server_multithread.png)
 
-### Soluzione {#soluzione .unnumbered}
+### Soluzione 
 
 ``` {caption="Pseudo-codice del programma principale"}
 creazione della coda dei messaggi di richiesta
