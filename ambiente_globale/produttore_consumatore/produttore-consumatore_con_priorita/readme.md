@@ -15,7 +15,7 @@ Lo schema deve essere basato sul costrutto **monitor** (con semantica
 **signal-and-continue**), introducendo un opportuno numero di condition
 variables per gestire i vincoli del problema. Si consideri il caso di un
 **vettore circolare di buffer** di tipo intero, gestito con due
-puntatori logici testa e coda, e i seguenti prototipi[^1]:
+puntatori logici testa e coda, e i seguenti prototipi<sup>[\[1\]](#footnote1)</sup>:
 
 
     typedef struct {
@@ -43,6 +43,6 @@ e stampa a video un elemento invocando consuma per 12 volte, e
 attendendo 1 secondo tra le invocazioni. Il programma principale attende
 la terminazione dei processi figli per poi terminare a sua volta.
 
-[^1]: Si allochi `PriorityProdCons` su una memoria condivisa UNIX; si
+<a name="footnote1">[1]</a>: Si allochi `PriorityProdCons` su una memoria condivisa UNIX; si
     utilizzi la sintassi `&(p->m)` per ottenere un puntatore alla
     variabile Monitor da utilizzare nelle procedure allegate.

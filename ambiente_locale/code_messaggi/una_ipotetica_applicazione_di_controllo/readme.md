@@ -22,7 +22,7 @@ pari a 15), e inviare un messaggio al processo Controllore di
 maggiore a 50, il processo Controllore dovrà inviare un messaggio di
 `interruzione riscaldamento` al processo Termostato. I messaggi dal
 Controllore al Termostato e al Mixer dovranno essere con send
-sincrona[^1].
+sincrona<sup>[\[1\]](#footnote1)</sup>.
 
 Infine, è richiesto che il Controllore invii al processo Interfaccia dei
 messaggi per aggiornare l'utente sul progresso delle operazioni
@@ -35,7 +35,7 @@ dell'Interfaccia, ed uno con il codice degli altri processi.
 
 ![image](/images/ambiente_locale/code_messaggi/una_ipotetica_applicazione_di_controllo.png)
 
-[^1]: Nel processo Termostato, quando il riscaldamento è attivo, si
+<a name="footnote1">[1]</a>: Nel processo Termostato, quando il riscaldamento è attivo, si
     faccia uso del parametro `IPC_NOWAIT` nell'attendere messaggi di
     `OK TO SEND`, in modo da permettere al processo di non bloccarsi
     mentre incrementa la temperatura.

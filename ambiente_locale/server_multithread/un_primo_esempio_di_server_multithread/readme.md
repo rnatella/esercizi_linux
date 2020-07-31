@@ -7,7 +7,7 @@ basata su **code di messaggi UNIX**. Il processo servente, denominato
 processi denominati **Client**. Ogni client invia 5 richieste di
 elaborazione. Ogni messaggio inviato dovrà contenere il PID del Client e
 due valori interi, selezionati casualmente tra 0 e 100 con la funzione
-`rand()`[^1]. I processi Client devono inoltre attendere e stampare a
+`rand()`<sup>[\[1\]](#footnote1)</sup>. I processi Client devono inoltre attendere e stampare a
 video il messaggio di risposta del Server proveniente da un'apposita
 coda dei messaggi di risposta, prima di mandare la richiesta successiva.
 I processi Client devono essere generati dallo stesso programma
@@ -97,7 +97,7 @@ invia messaggio risposta
 rilascia il mutex globale
 ```
 
-[^1]: La generazione casuale può essere implementata con la funzione
+<a name="footnote1">[1]</a>: La generazione casuale può essere implementata con la funzione
     rand() di stdlib.h; ad esempio: int incr = rand() % 101 rand()
     richiede che venga generato un seme dei numeri casuali attraverso la
     funzione srand(time(NULL)).

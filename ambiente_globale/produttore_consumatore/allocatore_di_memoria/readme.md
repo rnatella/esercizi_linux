@@ -22,14 +22,14 @@ di variabili di stato per ognuno dei caratteri da allocare (libero
 oppure occupato) ed ulteriori variabili per la sincronizzazione a cura
 dello studente. Il metodo `getMemoria()` alloca `n` elementi liberi
 contigui dell'array (marcandoli occupati), e ritorna un puntatore al
-primo carattere allocato[^1]. Questo metodo seleziona gli elementi da
+primo carattere allocato<sup>[\[1\]](#footnote1)</sup>. Questo metodo seleziona gli elementi da
 allocare secondo la strategia first-fit (si alloca il primo blocco di
 caratteri sufficientemente grande). Se non si trova un blocco
 sufficientemente grande da allocare, il thread richiedente deve essere
 sospeso finché non si libera memoria a sufficienza. Il metodo
 `releaseMemoria()` libera `n` elementi contigui a partire dalla
 posizione `blocco` (marcandoli liberi). Inoltre, tutti i thread in
-attesa devono essere risvegliati[^2] e controllare se si è reso
+attesa devono essere risvegliati<sup>[\[2\]](#footnote2)</sup> e controllare se si è reso
 disponibile un blocco sufficientemente grande, mettendosi di nuovo in
 attesa se questo non accade.
 
@@ -39,8 +39,8 @@ casuale (da 1 a 3 caratteri), attende 3 secondi e rilascia il blocco.
 Una volta generati i thread (come joinable), il programma principale ne
 attende la terminazione, e termina a sua volta.
 
-[^1]: Utilizzando ad esempio la sintassi `&memoria[5]` per ritornare un
+<a name="footnote1">[1]</a>: Utilizzando ad esempio la sintassi `&memoria[5]` per ritornare un
     puntatore al sesto elemento.
 
-[^2]: Utilizzando la primitiva `pthread_cond_broadcast()` oppure la
+<a name="footnote2">[2]</a>: Utilizzando la primitiva `pthread_cond_broadcast()` oppure la
     primitiva `pthread_cond_signal()`.

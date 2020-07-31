@@ -18,7 +18,7 @@ dove la variabile "temperatura" è un intero compreso tra -50 e +50, la
 variabile "umidita" è espressa in percentuale tra 0 e 100, e la
 variabile "pioggia" indica se il tempo è piovoso (1) o non piovoso (0).
 
-Il processo M genera in maniera casuale[^1] ogni 2 secondi le
+Il processo M genera in maniera casuale<sup>[\[1\]](#footnote1)</sup> ogni 2 secondi le
 informazioni meteo, memorizzandole nella struttura. M termina dopo aver
 effettuato 20 scritture. La scrittura deve avvenire in mutua esclusione.
 
@@ -37,7 +37,7 @@ principale attraverso le primitiva `fork`. Una volta generati i
 processi, il programma principale ne attende la terminazione prima di
 eliminare eventuali risorse condivise.
 
-[^1]: La generazione casuale può essere implementata con la funzione
+<a name="footnote1">[1]</a>: La generazione casuale può essere implementata con la funzione
     rand() di stdlib.h; ad esempio: `int umidita = rand() % 101`. La
     funzione rand() richiede che venga generato un seme dei numeri
     casuali attraverso la funzione `srand(time(NULL))`.
