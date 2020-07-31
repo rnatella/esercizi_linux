@@ -1,5 +1,5 @@
 Un primo esempio di server multithread
---------------------------------------
+======================================
 
 Si realizzi in linguaggio C/C++ un processo servente **multithread**
 basata su **code di messaggi UNIX**. Il processo servente, denominato
@@ -28,24 +28,74 @@ riceve il messaggio con la coppia di valori {-1,-1}, termina.
 
 ![image](/images/ambiente_locale/server_multithread/un_primo_esempio_di_server_multithread.png)
 
-### Soluzione
+### Soluzione {#soluzione .unnumbered}
 
-Processo Padre
+``` {caption="Pseudo-codice del programma principale"}
+creazione della coda dei messaggi di richiesta
+creazione della coda dei messaggi di risposta
 
-    creazione della coda dei messaggi di richiesta
-    creazione della coda dei messaggi di risposta
+fork di un processo Server
 
-    fork di un processo Server
+for(1..3)
+    fork di un processo Client
 
-    for(1..3)
-        fork di un processo Client
-
-    for(i..3)
-        wait
-
-    invia messaggio {-1,-1} sulla coda delle richieste
-
+for(1..3)
     wait
+
+invia messaggio {-1,-1} sulla coda delle richieste
+
+wait
+```
+
+``` {caption="Pseudo-codice del programma Client"}
+alloca struct messaggio richiesta (var. locale)
+alloca struct messaggio risposta (var. locale)
+
+inserisci PID nel messaggio richiesta
+
+for(1..5)
+    seleziona due interi casuali
+    inserisci gli interi nel messaggio richiesta
+    invia messaggio richiesta
+    ricezione (bloccante) messaggio risposta, specificando il PID nel parametro "tipo"
+    
+```
+
+``` {caption="Pseudo-codice del programma Server, thread principale"}
+alloca un mutex pthread (var. globale)
+
+alloca struct messaggio richiesta (var. locale)
+
+while true
+
+    ricezione (bloccante) messaggio richiesta, usando la struct come var. locale
+    
+    se il messaggio contiene {-1,-1}, terminare il processo
+    
+    alloca struct messaggio richiesta (var. dinamica)
+    
+    copia il messaggio richiesta dalla var. locale alla var. dinamica
+    
+    crea un thread "worker", passando la var. dinamica come parametro
+    
+```
+
+``` {caption="Pseudo-codice del programma Server, thread worker"}
+leggi i due valori interi dalla struct in ingresso
+leggi il PID dalla struct in ingresso
+
+alloca struct messaggio risposta (var. locale)
+
+calcola il prodotto
+scrivi il prodotto nel messaggio risposta
+scrive il PID nel messaggio risposta
+
+acquisisci il mutex globale
+
+invia messaggio risposta
+
+rilascia il mutex globale
+```
 
 [^1]: La generazione casuale può essere implementata con la funzione
     rand() di stdlib.h; ad esempio: int incr = rand() % 101 rand()
