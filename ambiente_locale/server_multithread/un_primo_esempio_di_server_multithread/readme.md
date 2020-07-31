@@ -1,5 +1,5 @@
 Un primo esempio di server multithread
-======================================
+--------------------------------------
 
 Si realizzi in linguaggio C/C++ un processo servente **multithread**
 basata su **code di messaggi UNIX**. Il processo servente, denominato
@@ -28,7 +28,7 @@ riceve il messaggio con la coppia di valori {-1,-1}, termina.
 
 ![image](/images/ambiente_locale/server_multithread/un_primo_esempio_di_server_multithread.png)
 
-**Soluzione**
+### Soluzione
 
 Processo Padre
 
