@@ -1,5 +1,5 @@
-Produttore/consumatore con vettore di stato, con monitor
-========================================================
+Produttore/consumatore con vettore di stato, con semafori
+=========================================================
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** per la
 simulazione di un servizio di prenotazione posti in un teatro.
