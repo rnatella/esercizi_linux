@@ -5,8 +5,8 @@ Si realizzi in linguaggio C/C++ un'applicazione **multithread** che
 effettui un calcolo distribuito secondo lo schema seguente, da
 realizzare utilizzando il costrutto **monitor**.
 
-Il thread principale dovrà creare **due buffer condivisi** ($B_1$ e
-$B_2$), che conterranno ognuno un valore di tipo intero, e inizialmente
+Il thread principale dovrà creare **due buffer condivisi** (<img src="https://render.githubusercontent.com/render/math?math=B_1"> e
+<img src="https://render.githubusercontent.com/render/math?math=B_2">), che conterranno ognuno un valore di tipo intero, e inizialmente
 pari a 0. Il thread principale dovrà poi creare dei thread scrittori e
 lettori, e attenderne la terminazione per poi terminare a sua volta.
 

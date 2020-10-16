@@ -22,17 +22,18 @@ intero casuale tra 0 e 19):
 Il processo **Schedulatore** preleva le richieste dalla testa della coda
 circolare (ossia applicando una politica FIFO). Per simulare la
 scrittura su disco, lo Schedulatore attende per un intervallo di tempo
-(tramite la primitiva `sleep()`) di durata $t_i = | p_i - p_{i-1} |$
-secondi, dove $p_i$ rappresenta la posizione sul disco della $i$-esima
-scrittura, assumendo $p_0=0$. Dopo aver atteso ti secondi, lo
-Schedulatore sovrascrive il valore della richiesta alla posizione $p_i$
+(tramite la primitiva `sleep()`) di durata <img src="https://render.githubusercontent.com/render/math?math=t_i = | p_i - p_{i-1} |">
+secondi, dove <img src="https://render.githubusercontent.com/render/math?math=p_i"> rappresenta la posizione sul disco della <img src="https://render.githubusercontent.com/render/math?math=i">-esima
+scrittura, assumendo <img src="https://render.githubusercontent.com/render/math?math=p_0=0">. Dopo aver atteso <img src="https://render.githubusercontent.com/render/math?math=t_i"> secondi, lo
+Schedulatore sovrascrive il valore della richiesta alla posizione <img src="https://render.githubusercontent.com/render/math?math=p_i">
 di un array rappresentante il disco (da allocare come variabile
 automatica). Lo **Schedulatore** termina dopo aver servito 25 richieste
 provenienti dai processi **Utente**.
 
-L'accesso da parte dei processi alla coda circolare e ai relativi
-puntatori `testa` e `coda` deve essere disciplinato attraverso il
-costrutto **Monitor di Hoare**.
+Si sincronizzi l'accesso alla coda circolare e ai relativi puntatori
+`testa` e `coda` tramite **semafori UNIX**. In una versione alternativa
+dell'esercizio, si sincronizzino gli accessi attraverso il costrutto
+**Monitor di Hoare**.
 
 I processi **Utente** e **Schedulatore** sono generati da un unico
 programma principale attraverso la primitiva `fork()`. Una volta
