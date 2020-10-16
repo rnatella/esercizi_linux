@@ -17,8 +17,8 @@ produttore produrrà una coppia con chiave 1; il primo processo
 consumatore consumerà una coppia con chiave 1 (ignorando le coppie con
 chiave 2 oppure 3), oppure dovrà sospendersi in attesa nel caso che non
 siano disponibili delle coppie con chiave 1. Si noti che sarà necessario
-utilizzare 3 semafori di tipo "messaggio disponibile", uno per ogni
-chiave.
+**utilizzare 3 semafori di tipo "messaggio disponibile", uno per ogni
+chiave**.
 
 Le operazioni di produzione e consumazione (durante cui un buffer è
 nello stato "in uso") dovranno durare un tempo casuale tra 1 e 3

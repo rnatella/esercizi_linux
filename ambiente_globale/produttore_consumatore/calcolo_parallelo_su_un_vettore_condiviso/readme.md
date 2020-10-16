@@ -7,9 +7,10 @@ all'interno di un vettore di grandi dimensioni. Il processo padre dovrà
 allocare un vettore di 10.000 valori interi, ed inizializzare il vettore
 con valori non negativi da scegliere casualmente. Dopodiché, il processo
 padre dovrà creare un gruppo di 10 processi figli, e scambiare con loro
-il vettore di interi. Il processo padre e i figli dovranno condividere
-in **mutua esclusione** un buffer, atto a contenere un singolo valore
-intero. Si utilizzino **memoria condivisa e semafori UNIX**.
+il vettore di interi. Il processo padre e i figli dovranno inoltre
+condividere in **mutua esclusione** un buffer, atto a contenere un
+singolo valore intero. Si utilizzino **memoria condivisa e semafori
+UNIX**.
 
 Ciascuno dei processi figli dovrà lavorare su **una porzione distinta
 del vettore** creato dal padre. Ad esempio, il primo figlio dovrà
