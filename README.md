@@ -44,8 +44,8 @@ Università degli Studi di Napoli Federico II
 * [Lettori/scrittori con semafori, su una coppia di valori condivisa](ambiente_globale/lettori_scrittori/lettori-scrittori_con_semafori_su_una_coppia_di_valori_condivisa)
 * [Lettori/scrittori con più elaborazioni su una matrice](ambiente_globale/lettori_scrittori/lettori-scrittori_con_piu_elaborazioni_su_una_matrice)
 * [Mutua esclusione e lettori/scrittori](ambiente_globale/lettori_scrittori/mutua_esclusione_e_lettori-scrittori)<sup><b>[con soluzione]</b></sup>
+* [Lettori/scrittori con monitor e processi](ambiente_globale/lettori_scrittori/lettori-scrittori_con_monitor_e_processi)
 * [Lettori/scrittori con priorità](ambiente_globale/lettori_scrittori/lettori-scrittori_con_priorita)
-* [Lettori/scrittori con monitor e threads](ambiente_globale/lettori_scrittori/lettori-scrittori_con_monitor_e_threads)<sup><b>[con soluzione]</b></sup>
 * [Lettori/scrittori su più oggetti monitor](ambiente_globale/lettori_scrittori/lettori-scrittori_su_piu_oggetti_monitor)<sup><b>[con soluzione]</b></sup>
 * [Lettori/scrittori su una coppia di buffer](ambiente_globale/lettori_scrittori/lettori-scrittori_su_una_coppia_di_buffer)
 * [Lettori/scrittori multipli](ambiente_globale/lettori_scrittori/lettori-scrittori_multipli)
