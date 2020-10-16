@@ -12,12 +12,12 @@ Università degli Studi di Napoli Federico II
 ## Modello ad ambiente globale, produttore-consumatore e mutua esclusione
 
 * [Una struttura dati stack thread-safe](ambiente_globale/produttore_consumatore/una_struttura_dati_stack_thread-safe)<sup><b>[con soluzione]</b></sup>
-* [Calcolo parallelo su un vettore condiviso](ambiente_globale/produttore_consumatore/calcolo_parallelo_su_un_vettore_condiviso)
+* [Calcolo parallelo su un vettore condiviso](ambiente_globale/produttore_consumatore/calcolo_parallelo_su_un_vettore_condiviso)<sup><b>[con soluzione]</b></sup>
 * [Produttore/consumatore con vettore di stato, con monitor](ambiente_globale/produttore_consumatore/produttore-consumatore_con_vettore_di_stato_con_monitor)<sup><b>[con soluzione]</b></sup>
 * [Produttore/consumatore con vettore di stato, con semafori](ambiente_globale/produttore_consumatore/produttore-consumatore_con_vettore_di_stato_con_semafori)<sup><b>[con soluzione]</b></sup>
 * [Produttore-consumatore con priorità](ambiente_globale/produttore_consumatore/produttore-consumatore_con_priorita)<sup><b>[con soluzione]</b></sup>
-* [Coppia di buffer](ambiente_globale/produttore_consumatore/coppia_di_buffer)
-* [Produttore/consumatore con elementi chiave-valore](ambiente_globale/produttore_consumatore/produttore-consumatore_con_elementi_chiave-valore)
+* [Coppia di buffer](ambiente_globale/produttore_consumatore/coppia_di_buffer)<sup><b>[con soluzione]</b></sup>
+* [Produttore/consumatore con elementi chiave-valore](ambiente_globale/produttore_consumatore/produttore-consumatore_con_elementi_chiave-valore)<sup><b>[con soluzione]</b></sup>
 * [Prelievi multipli](ambiente_globale/produttore_consumatore/prelievi_multipli)
 * [Produzione di un vettore variabile di elementi](ambiente_globale/produttore_consumatore/produzione_di_un_vettore_variabile_di_elementi)
 * [Pool di thread worker, con vettore circolare](ambiente_globale/produttore_consumatore/pool_di_thread_worker_con_vettore_circolare)<sup><b>[con soluzione]</b></sup>
