@@ -18,7 +18,7 @@ Università degli Studi di Napoli Federico II
 * [Produttore-consumatore con priorità](ambiente_globale/produttore_consumatore/produttore-consumatore_con_priorita)<sup><b>[con soluzione]</b></sup>
 * [Coppia di buffer](ambiente_globale/produttore_consumatore/coppia_di_buffer)<sup><b>[con soluzione]</b></sup>
 * [Produttore/consumatore con elementi chiave-valore](ambiente_globale/produttore_consumatore/produttore-consumatore_con_elementi_chiave-valore)<sup><b>[con soluzione]</b></sup>
-* [Prelievi multipli](ambiente_globale/produttore_consumatore/prelievi_multipli)
+* [Prelievi multipli](ambiente_globale/produttore_consumatore/prelievi_multipli)<sup><b>[con soluzione]</b></sup>
 * [Produzione di un vettore variabile di elementi](ambiente_globale/produttore_consumatore/produzione_di_un_vettore_variabile_di_elementi)
 * [Pool di thread worker, con vettore circolare](ambiente_globale/produttore_consumatore/pool_di_thread_worker_con_vettore_circolare)<sup><b>[con soluzione]</b></sup>
 * [Pool di thread worker, con vettore di stato](ambiente_globale/produttore_consumatore/pool_di_thread_worker_con_vettore_di_stato)<sup><b>[con soluzione]</b></sup>
@@ -41,10 +41,10 @@ Università degli Studi di Napoli Federico II
 
 ## Modello ad ambiente globale, lettori-scrittori
 
-* [Lettori/scrittori con semafori, su una coppia di valori condivisa](ambiente_globale/lettori_scrittori/lettori-scrittori_con_semafori_su_una_coppia_di_valori_condivisa)
+* [Lettori/scrittori con semafori, su una coppia di valori condivisa](ambiente_globale/lettori_scrittori/lettori-scrittori_con_semafori_su_una_coppia_di_valori_condivisa)<sup><b>[con soluzione]</b></sup>
 * [Lettori/scrittori con più elaborazioni su una matrice](ambiente_globale/lettori_scrittori/lettori-scrittori_con_piu_elaborazioni_su_una_matrice)
 * [Mutua esclusione e lettori/scrittori](ambiente_globale/lettori_scrittori/mutua_esclusione_e_lettori-scrittori)<sup><b>[con soluzione]</b></sup>
-* [Lettori/scrittori con monitor e processi](ambiente_globale/lettori_scrittori/lettori-scrittori_con_monitor_e_processi)
+* [Lettori/scrittori con monitor e processi](ambiente_globale/lettori_scrittori/lettori-scrittori_con_monitor_e_processi)<sup><b>[con soluzione]</b></sup>
 * [Lettori/scrittori con priorità](ambiente_globale/lettori_scrittori/lettori-scrittori_con_priorita)
 * [Lettori/scrittori su più oggetti monitor](ambiente_globale/lettori_scrittori/lettori-scrittori_su_piu_oggetti_monitor)<sup><b>[con soluzione]</b></sup>
 * [Lettori/scrittori su una coppia di buffer](ambiente_globale/lettori_scrittori/lettori-scrittori_su_una_coppia_di_buffer)
@@ -64,7 +64,7 @@ Università degli Studi di Napoli Federico II
 * [Server per esecuzione di comandi in remoto](ambiente_locale/code_messaggi/server_per_esecuzione_di_comandi_in_remoto)
 * [Controllo di congestione](ambiente_locale/code_messaggi/controllo_di_congestione)
 * [Produttore/consumatore con sincronizzazione tramite code](ambiente_locale/code_messaggi/produttore-consumatore_con_sincronizzazione_tramite_code)
-* [Server sincroni multipli](ambiente_locale/code_messaggi/server_sincroni_multipli)
+* [Server sincroni multipli](ambiente_locale/code_messaggi/server_sincroni_multipli)<sup><b>[con soluzione]</b></sup>
 * [Server con funzione di scrittore](ambiente_locale/code_messaggi/server_con_funzione_di_scrittore)
 * [Server con funzione di produttore](ambiente_locale/code_messaggi/server_con_funzione_di_produttore)
 * [Server sincrono con processo di interfaccia asincrono](ambiente_locale/code_messaggi/server_sincrono_con_processo_di_interfaccia_asincrono)
