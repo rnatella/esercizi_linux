@@ -11,80 +11,79 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define NUM_PRODUTTORI_1  1
+#define NUM_PRODUTTORI_2  3
+#define NUM_CONSUMATORI  1
+
+#define NUM_PRODUZIONI_1  3
+#define NUM_PRODUZIONI_2  3
+#define NUM_CONSUMAZIONI  12
+
 int main(int argc,char* argv[])
 {
 	
-	
-	int num_produttori_1,num_produttori_2,num_consumatori;
 	int status,indice;
 	PriorityProdCons* p = NULL;
 	int id_prod_cons;
 	pid_t pid;
 
-    num_produttori_1= 1;
-	num_produttori_2 = 3;
-	num_consumatori = 1;
 
 	
     
     //richiesta del buffer
 
-	id_prod_cons=shmget(IPC_PRIVATE, sizeof(PriorityProdCons),IPC_CREAT|0664);
+	id_prod_cons = shmget(IPC_PRIVATE, sizeof(PriorityProdCons),IPC_CREAT|0664);
 	printf("[DEBUG] - id_monitor=%d \n",id_prod_cons);
     
-	p =(PriorityProdCons *) (shmat(id_prod_cons,0,0));
+	p = (PriorityProdCons *) (shmat(id_prod_cons,0,0));
 	
     inizializza_prod_cons(p);
 
     
 	srand(time(NULL));
 	
-    int num_produzioni_1 = 3;
-	int num_produzioni_2 = 3;
-	int num_consumazioni = 12;
 	
-	int num_processi = num_produttori_1+num_produttori_2+ num_consumatori;
     
 	// generazione produttori e consumatori
 	int i,k;
-	for (k=0;k<num_produttori_1;k++) {
+	for (k=0;k<NUM_PRODUTTORI_1;k++) {
 		pid=fork();
 		if (pid==0)  {                //processo figlio
 			printf("sono il produttore 1. Il mio pid %d \n",getpid());
 			i = 0;
-			while(i < num_produzioni_1){
+			while(i < NUM_PRODUZIONI_1){
 				produci_alta_prio(p);
-				sleep(4);
+				sleep(1);
 				i++;
 			}
 			_exit(0);
 		}
 	}
 
-	for (k=0;k<num_produttori_2;k++) {
+	for (k=0;k<NUM_PRODUTTORI_2;k++) {
 		pid=fork();
 		if (pid==0)  {  
-	                //processo figlio
+	    	//processo figlio
 			i = 0;
 			printf("sono il produttore 2. Il mio pid %d \n",getpid());
 
-			while(i < num_produzioni_2){
+			while(i < NUM_PRODUZIONI_2){
 				produci_bassa_prio(p);
-				sleep(2);
+				sleep(1);
 				i++;
 			}
 			_exit(0);
 		}
 	}
 
-	for (k=0;k<num_consumatori;k++) {
+	for (k=0;k<NUM_CONSUMATORI;k++) {
 
 		pid=fork();
 		if (pid==0)  {                //processo figlio
 			printf("sono il consumatore. Il mio pid %d \n",getpid());
 			i = 0;
-			while(i < num_consumazioni){
-				sleep(1);
+			while(i < NUM_CONSUMAZIONI){
+				sleep(2);
 				consuma(p);
 				i++;
 			}
@@ -92,18 +91,24 @@ int main(int argc,char* argv[])
 		}
 	}
 
+
+	int num_processi = NUM_PRODUTTORI_1 + NUM_PRODUTTORI_2 + NUM_CONSUMATORI;
+
 	for (k=0; k<num_processi;k++){
 
 		pid=wait(&status);
-		if (pid==-1)
+		if (pid==-1) {
 			 perror("errore");
-		else
-			 printf ("Figlio n.ro %d e\' morto con status= %d \n ",pid,status);
+		} else {
+			 printf ("Figlio n.ro %d è morto con status= %d \n ",pid,status);
 		}
+	}
 
 	printf("Processo padre terminato...\n");
+
 	// rimozione memoria condivisa e semafori
 	rimuovi_prod_cons(p);
 	shmctl(id_prod_cons,IPC_RMID,0);
-	return 1;
+
+	return 0;
 }

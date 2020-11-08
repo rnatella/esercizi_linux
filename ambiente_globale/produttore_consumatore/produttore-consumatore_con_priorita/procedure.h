@@ -11,6 +11,7 @@ typedef struct{
 	int testa;
 	int coda;
 	int count;
+	int num_produttori_alta_prio;
 }PriorityProdCons;
 
 
