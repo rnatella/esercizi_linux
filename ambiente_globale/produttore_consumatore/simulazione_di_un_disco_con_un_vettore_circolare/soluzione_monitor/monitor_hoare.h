@@ -2,14 +2,28 @@
 
 
 typedef struct {
+
+//id del semaforo per realizzare il mutex del monitor
   int mutex;
+
+//id del semaforo per realizzare la coda urgent
+  int urgent_sem;
+
+//numero di variabili condition
   int num_var_cond;
+
 //id del gruppo sem associati alle var.cond
-  int id_conds;     
+  int id_conds;
+
+//id della memoria condivisa per i contatori delle variabili condition e della coda urgent
+  int id_shared;
+
 //array delle variabili condition_count
-   int *cond_counts; 
-//identificativo memoria condivisa
-   int id_shared;    
+  int *cond_counts;
+
+//contatore del numero di processi sospesi sulla coda urgent
+  int *urgent_count;
+
 } Monitor;
 
 //monitor e numero di variabili condition

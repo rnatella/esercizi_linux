@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #include "header.h"
 
@@ -63,7 +65,7 @@ void Schedulatore(MonitorSchedulatore * s) {
 
 		PrelevaRichiesta(s, &r);
 
-		printf("Schedulatore ha ricevuto una richiesta, attende %d secondi...\n", abs(r.posizione - posizione_corrente));
+		printf("Schedulatore ha ricevuto una richiesta, attende %d secondi...\n", abs((int)r.posizione - posizione_corrente));
 
 
 
@@ -73,7 +75,7 @@ void Schedulatore(MonitorSchedulatore * s) {
 		  PID del processo richiedente
 		*/
 
-		sleep(abs(r.posizione - posizione_corrente));
+		sleep(abs((int)r.posizione - posizione_corrente));
 
 		posizione_corrente = r.posizione;
 

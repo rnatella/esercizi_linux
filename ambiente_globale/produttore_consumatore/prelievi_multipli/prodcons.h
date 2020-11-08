@@ -1,7 +1,7 @@
 #ifndef _PRODCONS_H_
 #define _PRODCONS_H_
 
-#include "monitor.h"
+#include "monitor_hoare.h"
 
 #define DIM 10
 

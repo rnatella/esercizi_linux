@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "monitor.h"
+
+#include "monitor_hoare.h"
 #include "header.h"
 
 void Fornitore(Monitor* M, int* livello_scorte, int* scaffali_liberi, Magazzino* magazzino)
@@ -39,7 +40,8 @@ void Fornitore(Monitor* M, int* livello_scorte, int* scaffali_liberi, Magazzino*
 		(*livello_scorte)++;
 
 		signal_condition(M,MERCE_D);
-		// signal_and_return: la leave_monitor(M) non è necessaria in quanto la signal è l'ultima operazione effettuata
+
+		leave_monitor(M);
 	}
 }
 
@@ -79,9 +81,7 @@ void Cliente(Monitor* M, int* livello_scorte, int* scaffali_liberi, Magazzino* m
 		(*scaffali_liberi)++;
 
 		signal_condition(M,SPAZIO_D);
-		// la leave_monitor(M) non è necessaria in quanto la signal è l'ultima operazione effettuata
 		
-		
-		
+		leave_monitor(M);
 	}
 }

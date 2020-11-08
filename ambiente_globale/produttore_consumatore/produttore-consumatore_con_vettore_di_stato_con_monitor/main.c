@@ -5,7 +5,8 @@
 #include <sys/wait.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include "monitor.h"
+
+#include "monitor_hoare.h"
 #include "header.h"
 
 int main()

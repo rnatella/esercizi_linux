@@ -1,7 +1,7 @@
 #ifndef __PROCEDURE_H
 #define __PROCEDURE_H
 
-#include "monitor.h"
+#include "monitor_signal_continue.h"
 
 #define DIM 3
 

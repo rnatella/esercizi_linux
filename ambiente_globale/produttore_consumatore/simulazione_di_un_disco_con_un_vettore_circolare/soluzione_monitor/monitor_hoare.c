@@ -1,5 +1,5 @@
 /*************************************Monitor*************************************************/
-// Implementazione di un Monitor 
+// Implementazione di un Monitor signal-and-wait, con coda urgent (soluzione di Hoare)
 
 
 #include <sys/ipc.h>
@@ -8,7 +8,8 @@
 #include <sys/shm.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "monitor.h"
+
+#include "monitor_hoare.h"
 
 
 //Funzioni di utilita' private alla libreria Monitor
@@ -111,7 +112,7 @@ void remove_monitor(Monitor* M){
     shmctl(M->id_shared,IPC_RMID,0);
 
 #ifdef DEBUG_
-    printf(" \n Il Monitor è stato rimosso ! Arrivederci \n", getpid());
+    printf(" \n Il Monitor è stato rimosso ! Arrivederci \n");
 #endif
 
 }
