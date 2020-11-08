@@ -1,28 +1,36 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+
 #include "header.h"
 
 void InizioLettura(Monitor* m, Buffer * buf){
 	enter_monitor(m);
         
-	if (buf->occupato && buf->numlettori==0) //se ci sono già scrittori, si deve bloccare
+	if (buf->numscrittori > 0) //se ci sono già scrittori, si deve bloccare
 		wait_condition(m,SYNCHL);
-	buf->occupato = 1;
-	buf->numlettori=buf->numlettori+1;
+
+	buf->numlettori = buf->numlettori + 1;
 	
 	signal_condition(m,SYNCHL); // sblocco di eventuali altri lettori, 
 				    // se la segnalazione non è fatta per 
 				    // tutti dallo scrittore che rilascia
-    }
+
+	leave_monitor(m);
+}
 
 void FineLettura(Monitor* m, Buffer * buf) {
-        enter_monitor(m);
-        buf->numlettori=buf->numlettori-1;
-        if (buf->numlettori==0) {// se sono finiti i lettori lo segnala agli scrittori
-     		buf->occupato=0;
+	enter_monitor(m);
+
+	buf->numlettori = buf->numlettori - 1;
+
+	if (buf->numlettori == 0) {// se sono finiti i lettori lo segnala agli scrittori
+     	
 		signal_condition(m,SYNCHS);
 	}
-        else // altrimenti lascia il monitor
-        	leave_monitor(m);
+
+	leave_monitor(m);
 }
 
 
@@ -31,24 +39,31 @@ void FineLettura(Monitor* m, Buffer * buf) {
 
 void InizioScrittura(Monitor* m,Buffer*buf){
 	enter_monitor(m);
-	if (buf->occupato) //se ci sono già lettori o scrittori, si deve bloccare     	
+
+	if (buf->numlettori > 0 || buf->numscrittori > 0) //se ci sono già lettori o scrittori, si deve bloccare     	
 		wait_condition(m,SYNCHS);
-	buf->occupato = 1;
+
+	buf->numscrittori = 1;
+
 	leave_monitor(m);
 }
 
 void FineScrittura(Monitor* m, Buffer*buf){
 	enter_monitor(m);
-	if (queue_condition(m,SYNCHS)>0) // sblocco di eventuali altri scrittori
-		signal_condition(m,SYNCHS);
-        else if (queue_condition(m,SYNCHL)>0) { // sblocco di eventuali altri lettori
-     		signal_condition(m,SYNCHL);
-	}
-        else { // altrimenti lascia il monitor
-        	buf->occupato = 0;
-		leave_monitor(m);
-	}
+
+	buf->numscrittori = 0;
+
+	if (queue_condition(m,SYNCHS)>0) { // sblocco di eventuali altri scrittori
 	
+		signal_condition(m,SYNCHS);
+    
+	} else if (queue_condition(m,SYNCHL)>0) { // sblocco di eventuali altri lettori
+	
+		signal_condition(m,SYNCHL);
+	
+	}
+
+	leave_monitor(m);
 }
 
 

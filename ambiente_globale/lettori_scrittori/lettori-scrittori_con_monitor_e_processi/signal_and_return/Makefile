@@ -1,9 +1,17 @@
-SUBDIRS = monitor meteo
+all: meteo
 
-all: subs
+meteo: meteo.o procedure.o monitor_signal_return.o
+	gcc -o meteo meteo.o procedure.o monitor_signal_return.o
 
-subs:
-	for dir in $(SUBDIRS) ; do make -C $$dir ; done
+meteo.o: meteo.c header.h
+	gcc -c -o meteo.o meteo.c
+
+procedure.o: procedure.c header.h
+	gcc -c -o procedure.o procedure.c
+
+monitor_signal_return.o: monitor_signal_return.c monitor_signal_return.h
+	gcc -c -o monitor_signal_return.o monitor_signal_return.c
 
 clean:
-	for dir in $(SUBDIRS) ; do make clean -C $$dir ; done
+	rm -rf *.o
+	rm -rf meteo

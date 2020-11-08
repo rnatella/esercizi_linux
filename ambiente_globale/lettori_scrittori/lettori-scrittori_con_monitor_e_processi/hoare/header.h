@@ -1,5 +1,4 @@
-//#include <stdbool.h>
-#include "../monitor/monitor.h"
+#include "monitor_hoare.h"
 
 #define NUM_UTENTI 10
 #define NUM_CONDITIONS 2
@@ -15,10 +14,9 @@ typedef struct {
 
 typedef struct {
 	meteo meteo;
-	unsigned short occupato;
-	unsigned int numlettori;
+	int numlettori;
+	int numscrittori;
 } Buffer;
-
 
 
 void Servizio(Monitor* m, Buffer * buf);

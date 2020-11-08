@@ -16,6 +16,9 @@ int main(){
 	key_t id_meteo = shmget(IPC_PRIVATE,sizeof(Buffer),IPC_CREAT|0664);
 	Buffer * buf = (Buffer*) (shmat(id_meteo,0,0));
 
+	buf->numlettori = 0;
+	buf->numscrittori = 0;
+
 	pid_t pid;
 
 	int k;
