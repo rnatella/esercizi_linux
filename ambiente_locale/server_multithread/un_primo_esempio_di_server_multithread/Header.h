@@ -14,6 +14,6 @@ typedef struct{
 	int v3;
 }Buffer_S;
 
-void client();
-void server();
+void client(int id_c, int id_s);
+void server(int id_c, int id_s);
 void* Prodotto(void*);

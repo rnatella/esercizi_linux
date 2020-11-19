@@ -1,13 +1,16 @@
 all: Start
 
-Start: Main.o Procedure.o
-	gcc -g -o Start Main.o Procedure.o -pthread
+Start: Main.o Server.o Client.o
+	gcc -g -o Start Main.o Server.o Client.o -pthread
 
 main.o: Main.c Header.h
 	gcc -g -c Main.c
 
-Procedure.o: Procedure.c Header.h
-	gcc -g -c Procedure.c
+Server.o: Server.c Header.h
+	gcc -g -c Server.c
+
+Client.o: Client.c Header.h
+	gcc -g -c Client.c
 
 clean:
 	rm -f *.o

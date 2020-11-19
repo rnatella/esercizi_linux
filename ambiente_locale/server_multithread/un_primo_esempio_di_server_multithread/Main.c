@@ -9,23 +9,23 @@
 #include "Header.h"
 
 
-int id_c,id_s,i;
 
 
 int main(){
 
 	pid_t pidc, pids;
+	int id_c, id_s,i;
 	int ret;
 
 
-	id_c=msgget(IPC_PRIVATE, IPC_CREAT|0664);
+	id_c = msgget(IPC_PRIVATE, IPC_CREAT|0664);
 
 	if(id_c < 0) {
 		perror("Errore allocazione coda");
 		exit(1);
 	}
 
-	id_s=msgget(IPC_PRIVATE, IPC_CREAT|0664);
+	id_s = msgget(IPC_PRIVATE, IPC_CREAT|0664);
 
 	if(id_s < 0) {
 		perror("Errore allocazione coda");
@@ -36,7 +36,7 @@ int main(){
 
 	for(i=0;i<CLIENT;i++){
 
-		pidc=fork();
+		pidc = fork();
 
 		if(pidc<0) {
 			perror("Errore fork client");
@@ -44,13 +44,13 @@ int main(){
 		}
 
 		if(pidc==0){
-			client();
+			client(id_c, id_s);
 			exit(0);
 		}
 	}
 
 
-	pids=fork();
+	pids = fork();
 
 	if(pids<0) {
 		perror("Errore fork server");
@@ -58,7 +58,7 @@ int main(){
 	}
 
 	if(pids==0){
-		server();
+		server(id_c, id_s);
 		exit(0);
 	}
 
@@ -69,11 +69,11 @@ int main(){
 
 
 	Buffer_C uscita;
-	uscita.v1=-1;
-	uscita.v2=-1;
-	uscita.pid=getpid();
+	uscita.v1 = -1;
+	uscita.v2 = -1;
+	uscita.pid = getpid();
 
-	ret = msgsnd(id_c,&uscita,sizeof(Buffer_C)-sizeof(long),0);
+	ret = msgsnd(id_c, &uscita, sizeof(Buffer_C)-sizeof(long), 0);
 	if(ret < 0) {
 		perror("Errore invio messaggio di terminazione");
 		exit(1);
