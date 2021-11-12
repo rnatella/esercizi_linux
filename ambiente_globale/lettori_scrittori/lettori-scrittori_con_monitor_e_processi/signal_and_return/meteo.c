@@ -10,11 +10,14 @@
 
 int main(){
 
-	Monitor M;  
-	init_monitor(&M, NUM_CONDITIONS);
 
-	key_t id_meteo = shmget(IPC_PRIVATE,sizeof(Buffer),IPC_CREAT|0664);
-	Buffer * buf = (Buffer*) (shmat(id_meteo,0,0));
+	key_t id_meteo = shmget(IPC_PRIVATE,sizeof(MonitorMeteo),IPC_CREAT|0664);
+	MonitorMeteo * p = (MonitorMeteo *) (shmat(id_meteo,0,0));
+
+	init_monitor(&(p->m), NUM_CONDITIONS);
+
+	p->numlettori = 0;
+	p->numscrittori = 0;
 
 	pid_t pid;
 
@@ -23,7 +26,7 @@ int main(){
 
 		pid=fork();
 		if (pid==0) {
-			Utente(&M,buf);
+			Utente(p);
 			exit(0);
      	} else if(pid<0) {
 			perror("fork");
@@ -33,7 +36,7 @@ int main(){
 
 	pid=fork();
 	if (pid==0) {
-		Servizio(&M,buf);
+		Servizio(p);
 		exit(0);
 	} else if(pid<0) {
 		perror("fork");
@@ -47,9 +50,9 @@ int main(){
 			perror("errore");
 	}
 
-	shmctl(id_meteo,IPC_RMID,0);
+	remove_monitor(&(p->m));
 
-	remove_monitor(&M);
+	shmctl(id_meteo,IPC_RMID,0);
 
 	return 0;
 }

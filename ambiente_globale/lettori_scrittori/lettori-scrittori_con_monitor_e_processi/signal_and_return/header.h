@@ -1,11 +1,6 @@
-//#include <stdbool.h>
 #include "monitor_signal_return.h"
 
 #define NUM_UTENTI 10
-#define NUM_CONDITIONS 2
-
-#define SYNCHL 0
-#define SYNCHS 1
 
 typedef struct {
 	int temperatura;
@@ -15,11 +10,17 @@ typedef struct {
 
 typedef struct {
 	meteo meteo;
+
 	int numlettori;
 	int numscrittori;
-} Buffer;
 
+	Monitor m;
 
+} MonitorMeteo;
 
-void Servizio(Monitor* m, Buffer * buf);
-void Utente(Monitor* m, Buffer * buf);
+#define NUM_CONDITIONS 2
+#define CV_LETT 0
+#define CV_SCRITT 1
+
+void Servizio(MonitorMeteo* p);
+void Utente(MonitorMeteo* p);
