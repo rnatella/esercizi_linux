@@ -47,6 +47,8 @@ coda_richieste *inizializza_coda()
     c->coda = 0;
     c->shm_id = shm_id;
     c->sem_id = sem_id;
+
+    return c;
 }
 
 void preleva_richiesta(coda_richieste *c, richiesta *r)
@@ -60,7 +62,7 @@ void preleva_richiesta(coda_richieste *c, richiesta *r)
     r->posizione = c->vettore[c->coda].posizione;
     r->processo = c->vettore[c->coda].processo;
 
-    c->coda = (++c->coda) % DIM;
+    c->coda = (c->coda + 1) % DIM;
 
     Signal_Sem(c->sem_id, MUTEX_C); /* Non necessario quando c'è un solo consumatore */
 
@@ -78,14 +80,14 @@ void inserisci_richiesta(coda_richieste *c, richiesta *r)
     c->vettore[c->testa].posizione = r->posizione;
     c->vettore[c->testa].processo = r->processo;
 
-    c->testa = (++c->testa) % DIM;
+    c->testa = (c->testa + 1) % DIM;
 
     Signal_Sem(c->sem_id, MUTEX_P);
 
     Signal_Sem(c->sem_id, MESSAGGIO_DISP);
 }
 
-void *rimuovi_coda(coda_richieste *c)
+void rimuovi_coda(coda_richieste *c)
 {
     semctl(c->sem_id, 0, IPC_RMID);
     shmctl(c->shm_id, IPC_RMID, NULL);

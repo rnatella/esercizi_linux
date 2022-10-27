@@ -23,7 +23,7 @@ typedef struct
 #define SPAZIO_DISP 0
 #define MESSAGGIO_DISP 1
 #define MUTEX_P 2
-#define MUTEX_C 3   
+#define MUTEX_C 3
 
 /* Nota: MUTEX_C è opzionale in questo esercizio,
  * c'è un solo consumatore */
@@ -31,6 +31,6 @@ typedef struct
 coda_richieste * inizializza_coda();
 void preleva_richiesta(coda_richieste *c, richiesta * r);
 void inserisci_richiesta(coda_richieste *c, richiesta * r);
-void *rimuovi_coda(coda_richieste *c);
+void rimuovi_coda(coda_richieste *c);
 
 #endif

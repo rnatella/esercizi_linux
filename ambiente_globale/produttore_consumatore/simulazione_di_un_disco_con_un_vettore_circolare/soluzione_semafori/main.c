@@ -23,7 +23,7 @@ void Schedulatore(coda_richieste *c)
 
         printf("[%d] Prelevo richiesta: posizione=%d, processo=%d\n", getpid(), r.posizione, r.processo);
 
-        int attesa = abs(posizione_corrente - r.posizione);
+        int attesa = abs(posizione_corrente - (int)r.posizione);
 
         printf("[%d] Attesa Schedulatore... (%d secondi)\n", getpid(), attesa);
 
