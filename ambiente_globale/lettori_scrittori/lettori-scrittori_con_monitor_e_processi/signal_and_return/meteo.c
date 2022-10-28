@@ -11,8 +11,8 @@
 int main(){
 
 
-	key_t id_meteo = shmget(IPC_PRIVATE,sizeof(MonitorMeteo),IPC_CREAT|0664);
-	MonitorMeteo * p = (MonitorMeteo *) (shmat(id_meteo,0,0));
+	int id_shm = shmget(IPC_PRIVATE,sizeof(MonitorMeteo),IPC_CREAT|0664);
+	MonitorMeteo * p = (MonitorMeteo *) (shmat(id_shm,0,0));
 
 	init_monitor(&(p->m), NUM_CONDITIONS);
 
@@ -52,7 +52,7 @@ int main(){
 
 	remove_monitor(&(p->m));
 
-	shmctl(id_meteo,IPC_RMID,0);
+	shmctl(id_shm,IPC_RMID,0);
 
 	return 0;
 }
