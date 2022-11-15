@@ -12,15 +12,24 @@ void Consumatore();
 
 int main() {
 
-    key_t chiave_coda_richieste = /* TBD: Scegliere una chiave per la coda richieste */
+    key_t chiave_coda_richieste = ftok(".", 'a');
 
-    int id_coda_richieste = /* TBD: Creare la coda richieste */
+    int id_coda_richieste = msgget(chiave_coda_richieste, IPC_CREAT | 0664);
+
+    if(id_coda_richieste < 0) {
+        perror("Errore msgget");
+        exit(1);
+    }
 
 
+    key_t chiave_coda_risposte = ftok(".", 'b');
 
-    key_t chiave_coda_risposte = /* TBD: Scegliere una chiave per la coda risposte */
+    int id_coda_risposte = msgget(chiave_coda_risposte, IPC_CREAT | 0664);
 
-    int id_coda_risposte = /* TBD: Creare la coda risposte */
+    if(id_coda_risposte < 0) {
+        perror("Errore msgget");
+        exit(1);
+    }
 
 
     init_client(id_coda_richieste, id_coda_risposte);
@@ -52,9 +61,8 @@ int main() {
     wait(NULL);
     wait(NULL);
 
-    
-    /* TBD: Rimozione coda richieste */
-    /* TBD: Rimozione coda risposte */
+    msgctl(id_coda_richieste, IPC_RMID, NULL);
+    msgctl(id_coda_risposte, IPC_RMID, NULL);
 }
 
 

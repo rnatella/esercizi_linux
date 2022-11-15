@@ -21,36 +21,44 @@ struct param {
 
 int main() {
 
-    key_t chiave_coda_richieste = /* TBD: Scegliere una chiave per la coda richieste */
+    key_t chiave_coda_richieste = ftok(".", 'a');
 
-    int id_coda_richieste = /* TBD: Creare la coda richieste */
+    int id_coda_richieste = msgget(chiave_coda_richieste, IPC_CREAT | 0664);
+
+    if(id_coda_richieste < 0) {
+        perror("Errore msgget");
+        exit(1);
+    }
 
 
+    key_t chiave_coda_risposte = ftok(".", 'b');
 
-    key_t chiave_coda_risposte = /* TBD: Scegliere una chiave per la coda risposte */
+    int id_coda_risposte = msgget(chiave_coda_risposte, IPC_CREAT | 0664);
 
-    int id_coda_risposte = /* TBD: Creare la coda risposte */
-
+    if(id_coda_risposte < 0) {
+        perror("Errore msgget");
+        exit(1);
+    }
 
 
     init_monitor();
 
 
-
+    pthread_t thread_workers[TOTALE_WORKER];
 
     for(int i=0; i<TOTALE_WORKER; i++) {
 
-        /* TBD: Creare il gruppo di thread "Worker", 
-                facendogli eseguire la funzione worker(),
-                e passandogli gli id delle code in ingresso
-                usando "struct param" (definita sopra).
-         */
+        struct param * p = malloc(sizeof(struct param));
+        p->id_coda_richieste = id_coda_richieste;
+        p->id_coda_risposte = id_coda_risposte;
+
+        pthread_create(&thread_workers[i], NULL, worker, p);
     }
 
 
     for(int i=0; i<TOTALE_WORKER; i++) {
 
-        /* TBD: Attendere la terminazione dei thread Worker */
+        pthread_join(thread_workers[i], NULL);
     }
 
     remove_monitor();
@@ -61,8 +69,10 @@ int main() {
 
 void * worker(void * x) {
 
-    int id_coda_richieste = /* TBD: Prendere in ingresso lo ID della coda richieste */
-    int id_coda_risposte = /* TBD: Prendere in ingresso lo ID della coda risposte */
+    struct param * p = (struct param *) x;
+
+    int id_coda_richieste = p->id_coda_richieste;
+    int id_coda_risposte = p->id_coda_risposte;
 
     int ret;
     int risultato;
@@ -73,14 +83,21 @@ void * worker(void * x) {
 
     for(int i=0; i<RICHIESTE_PER_WORKER; i++) {
 
-        /* TBD: Ricevere un messaggio di richiesta RPC */
+        richiesta_rpc richiesta;
+
+        ret = msgrcv(id_coda_richieste, &richiesta, sizeof(richiesta_rpc) - sizeof(long), 0, 0);
+
+        if(ret < 0) {
+            perror("Errore msgrcv");
+            exit(1);
+        }
 
         
-        if( /* TBD: Il tipo di richiesta è "PRODUCI CON SOMMA" */) {
+        if(richiesta.type == TYPE_PRODUCI_CON_SOMMA) {
 
-            int val1 = /* TBD */
-            int val2 = /* TBD */
-            int val3 = /* TBD */
+            int val1 = richiesta.parametro1;
+            int val2 = richiesta.parametro2;
+            int val3 = richiesta.parametro3;
 
             printf("[Worker] Ricevuta richiesta di tipo PRODUCI CON SOMMA(%d, %d, %d)\n", val1, val2, val3);
 
@@ -90,9 +107,9 @@ void * worker(void * x) {
             errore = 0;
 
         }
-        else if(/* TBD: Il tipo di richiesta è "PRODUCI" */) {
+        else if(richiesta.type == TYPE_PRODUCI) {
 
-            int val1 = /* TBD */
+            int val1 = richiesta.parametro1;
 
             printf("[Worker] Ricevuta richiesta di tipo PRODUCI(%d)\n", val1);
 
@@ -101,7 +118,7 @@ void * worker(void * x) {
             risultato = 0;
             errore = 0;
         }
-        else if(/* TBD: Il tipo di richiesta è "CONSUMA" */) {
+        else if(richiesta.type == TYPE_CONSUMA) {
 
             printf("[Worker] Ricevuta richiesta di tipo CONSUMA(nessun parametro)\n");
 
@@ -116,16 +133,25 @@ void * worker(void * x) {
             errore = 1;
         }
 
-        /* TBD: Inviare un messaggio di risposta RPC,
-                in cui inserire "risultato" ed "errore"
-         */
+        int pid_client = richiesta.pid_client;
 
+        risposta_rpc risposta;
+        risposta.type = pid_client;
+        risposta.risultato = risultato;
+        risposta.errore = errore;
+
+        ret = msgsnd(id_coda_risposte, &risposta, sizeof(risposta_rpc) - sizeof(long), 0);
+
+        if(ret < 0) {
+            perror("Errore msgsnd");
+            exit(1);
+        }
 
         printf("[Worker] Inviato risposta: risultato=%d, errore=%d\n", risultato, errore);
 
     }
 
-
+    free(p);
 
 
     printf("[Worker] Terminazione\n");

@@ -18,46 +18,100 @@ void init_client(int id_coda_richieste_parametro, int id_coda_risposte_parametro
 
 void produci_con_somma(int val1, int val2, int val3) {
 
-    /* TBD: Inviare un messaggio di tipo "PRODUCI CON SOMMA" */
+    richiesta_rpc richiesta;
+
+    richiesta.type = TYPE_PRODUCI_CON_SOMMA;
+    richiesta.parametro1 = val1;
+    richiesta.parametro2 = val2;
+    richiesta.parametro3 = val3;
+    richiesta.pid_client = getpid();
+
+    int ret = msgsnd(id_coda_richieste, &richiesta, sizeof(richiesta_rpc) - sizeof(long), 0);
+
+    if(ret < 0) {
+        perror("Errore msgsnd");
+        exit(1);
+    }
 
     printf("[Client] Invio richiesta PRODUCI_CON_SOMMA(%d, %d, %d)\n", val1, val2, val3);
 
 
-    /* TBD: Ricevere un messaggio di risposta */
+    risposta_rpc risposta;
 
+    ret = msgrcv(id_coda_risposte, &risposta, sizeof(risposta_rpc) - sizeof(long), getpid(), 0);
 
-    int risultato = /* TBD */;
-    int errore = /* TBD */;
+    if(ret < 0) {
+        perror("Errore msgrcv");
+        exit(1);
+    }
+
+    int risultato = risposta.risultato;
+    int errore = risposta.errore;
 
     printf("[Client] Ricevuto risposta: risultato=%d, errore=%d\n", risultato, errore);
 }
 
 void produci(int val) {
 
-    /* TBD: Inviare un messaggio di tipo "PRODUCI" */
+    richiesta_rpc richiesta;
+
+    richiesta.type = TYPE_PRODUCI;
+    richiesta.parametro1 = val;
+    richiesta.pid_client = getpid();
+
+    int ret = msgsnd(id_coda_richieste, &richiesta, sizeof(richiesta_rpc) - sizeof(long), 0);
+
+    if(ret < 0) {
+        perror("Errore msgsnd");
+        exit(1);
+    }
 
     printf("[Client] Invio richiesta PRODUCI(%d)\n", val);
 
 
-    /* TBD: Ricevere un messaggio di risposta */
+    risposta_rpc risposta;
 
-    int risultato = /* TBD */
-    int errore = /* TBD */
+    ret = msgrcv(id_coda_risposte, &risposta, sizeof(risposta_rpc) - sizeof(long), getpid(), 0);
+
+    if(ret < 0) {
+        perror("Errore msgrcv");
+        exit(1);
+    }
+
+    int risultato = risposta.risultato;
+    int errore = risposta.errore;
 
     printf("[Client] Ricevuto risposta: risultato=%d, errore=%d\n", risultato, errore);
 }
 
 int consuma() {
 
-    /* TBD: Inviare un messaggio di tipo "CONSUMA" */
+    richiesta_rpc richiesta;
+
+    richiesta.type = TYPE_CONSUMA;
+    richiesta.pid_client = getpid();
+
+    int ret = msgsnd(id_coda_richieste, &richiesta, sizeof(richiesta_rpc) - sizeof(long), 0);
+
+    if(ret < 0) {
+        perror("Errore msgsnd");
+        exit(1);
+    }
 
     printf("[Client] Invio richiesta CONSUMA(nessun parametro)\n");
 
 
-    /* TBD: Ricevere un messaggio di risposta */
+    risposta_rpc risposta;
 
-    int risultato = /* TBD */
-    int errore = /* TBD */
+    ret = msgrcv(id_coda_risposte, &risposta, sizeof(risposta_rpc) - sizeof(long), getpid(), 0);
+
+    if(ret < 0) {
+        perror("Errore msgrcv");
+        exit(1);
+    }
+
+    int risultato = risposta.risultato;
+    int errore = risposta.errore;
 
     printf("[Client] Ricevuto risposta: risultato=%d, errore=%d\n", risultato, errore);
 
