@@ -82,6 +82,6 @@ Università degli Studi di Napoli Federico II
 * [Due threads, con buffer condiviso](ambiente_locale/server_multithread/due_threads_con_buffer_condiviso)
 * [Manager/Worker, con produttore-consumatore](ambiente_locale/server_multithread/manager-worker_con_produttore-consumatore)<sup><b>[con soluzione]</b></sup>
 * [Processo interfaccia, con thread produttore-consumatore](ambiente_locale/server_multithread/processo_interfaccia_con_produttore-consumatore)
-* [Remote Procedure Call](ambiente_locale/server_multithread/remote_procedure_call)
+* [Remote Procedure Call](ambiente_locale/server_multithread/remote_procedure_call)<sup><b>[con soluzione]</b></sup>
 
 
