@@ -1,5 +1,4 @@
-Calcolo parallelo su un vettore condiviso
-=========================================
+# Calcolo parallelo su un vettore condiviso
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** che
 svolga, in parallelo su più processi, la **ricerca del valore minimo**

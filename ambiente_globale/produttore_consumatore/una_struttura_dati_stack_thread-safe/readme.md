@@ -1,5 +1,4 @@
-Una struttura dati stack thread-safe
-====================================
+# Una struttura dati stack thread-safe
 
 i realizzi in linguaggio C/C++ un tipo di dato astratto **Stack** che
 sia **thread-safe**, ossia i cui metodi siano richiamabili da più thread

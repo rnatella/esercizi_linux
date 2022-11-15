@@ -1,5 +1,4 @@
-Pipeline di buffer singoli, con probabilità di modifica
-=======================================================
+# Pipeline di buffer singoli, con probabilità di modifica
 
 Si realizzi un'applicazione **multiprocesso** di tipo
 Produttore-Consumatore, utilizzando semafori e **memoria condivisa

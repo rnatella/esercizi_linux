@@ -1,5 +1,4 @@
-Server sincrono con processo di interfaccia asincrono
-=====================================================
+# Server sincrono con processo di interfaccia asincrono
 
 Si realizzi in linguaggio C/C++ una applicazione di tipo Client-Server
 basata su **code di messaggi UNIX**. Oltre ad un processo Server e ad un

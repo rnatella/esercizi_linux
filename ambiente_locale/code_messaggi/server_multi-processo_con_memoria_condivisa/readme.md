@@ -1,5 +1,4 @@
-Server multi-processo con memoria condivisa
-===========================================
+# Server multi-processo con memoria condivisa
 
 Si realizzi in linguaggio C/C++ una applicazione di tipo Client-Server
 basata su **code di messaggi UNIX**. L'applicazione dovrà essere

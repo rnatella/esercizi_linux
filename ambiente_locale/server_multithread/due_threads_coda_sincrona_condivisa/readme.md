@@ -1,5 +1,4 @@
-Due threads, coda sincrona condivisa
-====================================
+# Due threads, coda sincrona condivisa
 
 Si realizzi in linguaggio C/C++ un programma basato su **code di
 messaggi UNIX**, che generi tre processi Client ed un processo Server. I

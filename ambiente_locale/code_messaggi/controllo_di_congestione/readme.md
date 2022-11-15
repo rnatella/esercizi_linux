@@ -1,5 +1,4 @@
-Controllo di congestione
-========================
+# Controllo di congestione
 
 Si realizzi in C/C++ una applicazione **multiprocesso** basata su **code
 di messaggi UNIX**, che realizzi uno schema **produttore-consumatore con

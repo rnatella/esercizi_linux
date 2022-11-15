@@ -1,5 +1,4 @@
-Allocatore di memoria
-=====================
+# Allocatore di memoria
 
 Si realizzi in linguaggio C/C++ una struttura dati **monitor** che funga
 da allocatore di memoria per applicazioni **multithread** (usando

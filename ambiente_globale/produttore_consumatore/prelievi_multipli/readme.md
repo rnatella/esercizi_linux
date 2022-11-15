@@ -1,5 +1,4 @@
-Prelievi multipli
-=================
+# Prelievi multipli
 
 Si realizzi in linguaggio C/C++ un'applicazione **multi-processo** in
 cui P produttori e C consumatori scambiano dati attraverso una buffer

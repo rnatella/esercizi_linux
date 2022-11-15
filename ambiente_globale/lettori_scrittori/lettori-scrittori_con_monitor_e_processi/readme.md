@@ -1,5 +1,4 @@
-Lettori/scrittori con monitor e processi
-========================================
+# Lettori/scrittori con monitor e processi
 
 Si realizzi in linguaggio C/C++ un'applicazione multiprocesso per la
 simulazione di un servizio meteo. L'applicazione sia costituita da 11

@@ -1,5 +1,4 @@
-Grafo delle dipendenze
-======================
+# Grafo delle dipendenze
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** per il
 calcolo distribuito della formula
@@ -20,8 +19,9 @@ richieste di elaborazione, anche esse in parallelo, ai processi P5
 di produrre un risultato a sua volta. Il processo P1 deve stampare a
 video gli operandi che esso genera, i risultati che riceve e il valore
 di y ottenuto. Il processo P1 ripete l'intero procedimento per 3 volte.
-Si richiede inoltre che lo studente sviluppi **6 programmi separati, uno
-per ogni processo P1\...P6, e che vengano generati 6 eseguibili dalla
+
+Si richiede che lo studente sviluppi **6 programmi separati, uno per
+ogni processo P1\...P6, e che vengano generati 6 eseguibili dalla
 compilazione**. Un ulteriore programma deve generare i processi
 P1\...P6, tramite l'uso delle primitive `fork()` ed `exec()`, ed
 attenderne la terminazione.

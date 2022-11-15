@@ -1,5 +1,4 @@
-Pool di thread worker, con vettore di stato
-===========================================
+# Pool di thread worker, con vettore di stato
 
 Si realizzi in linguaggio C/C++ un'applicazione **multithread** che
 svolga delle elaborazioni aritmetiche in concorrenza, utilizzando il

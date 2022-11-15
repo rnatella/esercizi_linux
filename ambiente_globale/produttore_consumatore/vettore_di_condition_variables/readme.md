@@ -1,5 +1,4 @@
-Vettore di condition variables
-==============================
+# Vettore di condition variables
 
 Si realizzi in linguaggio C o C++ un programma **multi-thread** (con la
 libreria PThreads) per la gestione di un servizio di noleggio film in

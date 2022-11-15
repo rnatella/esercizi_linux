@@ -1,5 +1,4 @@
-Produttore/consumatore asimmetrico, con vettore circolare
-=========================================================
+# Produttore/consumatore asimmetrico, con vettore circolare
 
 Si realizzi in linguaggio C/C++ un'applicazione multithread utilizzando
 il costrutto Monitor, che simuli la gestione di un vettore di buffer di

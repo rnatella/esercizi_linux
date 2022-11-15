@@ -1,5 +1,4 @@
-Pipeline di code, con probabilità di modifiche
-==============================================
+# Pipeline di code, con probabilità di modifiche
 
 Si realizzi un'applicazione **multiprocesso** di tipo Client-Server,
 utilizzando **code di messaggi UNIX**. In aggiunta a 3 processi Client e

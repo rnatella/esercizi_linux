@@ -1,5 +1,4 @@
-Pipeline di code, con filtraggio
-================================
+# Pipeline di code, con filtraggio
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** basata
 su **code di messaggi UNIX**, secondo lo schema in **pipeline**

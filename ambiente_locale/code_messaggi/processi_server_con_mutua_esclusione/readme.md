@@ -1,5 +1,4 @@
-Processi server con mutua esclusione
-====================================
+# Processi server con mutua esclusione
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso**
 secondo il seguente schema. Tre processi, detti **Server**, gestiscono

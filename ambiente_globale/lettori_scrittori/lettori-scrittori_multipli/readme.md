@@ -1,5 +1,4 @@
-Lettori/scrittori multipli
-==========================
+# Lettori/scrittori multipli
 
 Si realizzi in linguaggio C/C++ il seguente programma **multithread**
 basato sullo schema **lettore/scrittore**. Il programma dovrà

@@ -1,5 +1,4 @@
-Vettore di buffer di caratteri
-==============================
+# Vettore di buffer di caratteri
 
 Si realizzi in linguaggio C/C++ il seguente programma **multithread**
 basato sullo **schema produttore/consumatore**. Il programma dovrà

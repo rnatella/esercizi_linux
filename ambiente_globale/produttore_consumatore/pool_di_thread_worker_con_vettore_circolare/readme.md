@@ -1,5 +1,4 @@
-Pool di thread worker, con vettore circolare
-============================================
+# Pool di thread worker, con vettore circolare
 
 Si realizzi in linguaggio C/C++ un **monitor** che implementi la
 gestione di un **pool di thread** mediante la libreria PThreads. Per

@@ -1,5 +1,4 @@
-Lettori/scrittori con priorità
-==============================
+# Lettori/scrittori con priorità
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso**,
 basata su costrutto **monitor**, che implementi la variante dello schema

@@ -1,5 +1,4 @@
-Prodotto scalare con vettori dinamici
-=====================================
+# Prodotto scalare con vettori dinamici
 
 Si realizzi in linguaggio C/C++ un'applicazione **multithread** per il
 calcolo del prodotto scalare tra due vettori. Si introduca una struttura

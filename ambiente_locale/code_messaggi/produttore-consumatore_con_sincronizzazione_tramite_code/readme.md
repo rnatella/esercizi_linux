@@ -1,5 +1,4 @@
-Produttore/consumatore con sincronizzazione tramite code
-========================================================
+# Produttore/consumatore con sincronizzazione tramite code
 
 Si realizzi in linguaggio C/C++ una applicazione **multi-processo**
 basato su **code di messaggi UNIX e shared memory UNIX**, secondo lo

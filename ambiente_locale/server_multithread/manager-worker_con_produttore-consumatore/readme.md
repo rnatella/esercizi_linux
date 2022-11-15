@@ -1,5 +1,4 @@
-Manager/Worker, con produttore-consumatore
-==========================================
+# Manager/Worker, con produttore-consumatore
 
 Si realizzi in linguaggio C/C++ un processo servente **multithread**
 basato su **code di messaggi UNIX**. Il processo servente, denominato

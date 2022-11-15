@@ -1,5 +1,4 @@
-Produttore/consumatore con vettore di stato, con monitor
-========================================================
+# Produttore/consumatore con vettore di stato, con monitor
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** per la
 simulazione di un magazzino per lo stoccaggio di merci. L'applicazione è

@@ -1,5 +1,4 @@
-Lettori/scrittori con semafori, su una coppia di valori condivisa
-=================================================================
+# Lettori/scrittori con semafori, su una coppia di valori condivisa
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** in cui
 un processo scrittore e due processi lettori scambiano dati attraverso

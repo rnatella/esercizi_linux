@@ -1,5 +1,4 @@
-Pool di thread worker, con vettori circolari di operandi e risultati
-====================================================================
+# Pool di thread worker, con vettori circolari di operandi e risultati
 
 Si realizzi in linguaggio C/C++ la seguente applicazione
 **multithread**, basata su monitor e sullo schema

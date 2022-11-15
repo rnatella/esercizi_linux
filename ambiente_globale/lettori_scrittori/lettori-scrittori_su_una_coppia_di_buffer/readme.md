@@ -1,5 +1,4 @@
-Lettori/scrittori su una coppia di buffer
-=========================================
+# Lettori/scrittori su una coppia di buffer
 
 Si realizzi in linguaggio C/C++ un'applicazione **multithread** che
 effettui un calcolo distribuito secondo lo schema seguente, da

@@ -1,5 +1,4 @@
-Lettori/scrittori con più elaborazioni su una matrice
-=====================================================
+# Lettori/scrittori con più elaborazioni su una matrice
 
 Si realizzi in linguaggio C/C++ una applicazione **multiprocesso** che
 simuli delle elaborazioni su una matrice. La matrice dovrà essere

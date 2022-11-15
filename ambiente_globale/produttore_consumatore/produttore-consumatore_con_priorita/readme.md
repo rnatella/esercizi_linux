@@ -1,5 +1,4 @@
-Produttore-consumatore con priorità
-===================================
+# Produttore-consumatore con priorità
 
 Si implementi in linguaggio C/C++ lo schema **produttore-consumatore a
 priorità** illustrato di seguito. Occorre che vi siano 2 tipi di

@@ -1,5 +1,4 @@
-Vettore di stato, con più tipologie di prodotto e condition variables
-=====================================================================
+# Vettore di stato, con più tipologie di prodotto e condition variables
 
 Si realizzi in linguaggio C/C++ un'applicazione **multithread** che
 simuli un negozio di abbigliamento, i cui articoli sono memorizzati in

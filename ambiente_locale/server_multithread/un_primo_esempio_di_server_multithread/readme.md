@@ -1,5 +1,4 @@
-Un primo esempio di server multithread
-======================================
+# Un primo esempio di server multithread
 
 Si realizzi in linguaggio C/C++ un processo servente **multithread**
 basata su **code di messaggi UNIX**. Il processo servente, denominato
@@ -48,6 +47,7 @@ wait
 ```
 
 ``` {caption="Pseudo-codice del programma Client"}
+
 alloca struct messaggio richiesta (var. locale)
 alloca struct messaggio risposta (var. locale)
 
@@ -62,6 +62,7 @@ for(1..5)
 ```
 
 ``` {caption="Pseudo-codice del programma Server, thread principale"}
+
 alloca un mutex pthread (var. globale)
 
 alloca struct messaggio richiesta (var. locale)
@@ -81,6 +82,7 @@ while true
 ```
 
 ``` {caption="Pseudo-codice del programma Server, thread worker"}
+
 leggi i due valori interi dalla struct in ingresso
 leggi il PID dalla struct in ingresso
 

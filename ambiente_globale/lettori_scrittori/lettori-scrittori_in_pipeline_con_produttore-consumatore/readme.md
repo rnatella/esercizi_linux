@@ -1,5 +1,4 @@
-Lettori/scrittori in pipeline con produttore-consumatore
-========================================================
+# Lettori/scrittori in pipeline con produttore-consumatore
 
 Si realizzi in linguaggio C/C++ una applicazione **multithread**, basata
 sul costrutto **monitor**, in cui siano previsti tre tipi di thread: un

@@ -1,5 +1,4 @@
-Processo gestore di un magazzino
-================================
+# Processo gestore di un magazzino
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso**,
 basata su **code di messaggi UNIX**, per simulare la gestione di un

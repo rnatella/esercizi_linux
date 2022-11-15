@@ -1,5 +1,4 @@
-Mutua esclusione e lettori/scrittori
-====================================
+# Mutua esclusione e lettori/scrittori
 
 Si realizzi in linguaggio C o C++ un programma **multi-processo** che
 simuli la gestione e prenotazione degli appelli di esame universitari.

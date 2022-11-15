@@ -1,5 +1,4 @@
-Lettori/scrittori con versioning
-================================
+# Lettori/scrittori con versioning
 
 Si realizzi in linguaggio C o C++ un programma **multithread** (con la
 libreria PThreads) basato sul costrutto Monitor, che realizzi la

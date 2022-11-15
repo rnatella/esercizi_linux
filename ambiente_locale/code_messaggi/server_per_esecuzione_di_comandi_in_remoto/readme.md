@@ -1,5 +1,4 @@
-Server per esecuzione di comandi in remoto
-==========================================
+# Server per esecuzione di comandi in remoto
 
 Si realizzi in linguaggio C/C++ la seguente applicazione
 **multi-processo** basata su **code di messaggi UNIX**. Un processo

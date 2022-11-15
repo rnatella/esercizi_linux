@@ -1,5 +1,4 @@
-Server con funzione di scrittore
-================================
+# Server con funzione di scrittore
 
 Si realizzi in linguaggio C/C++ una applicazione **multiprocesso** per
 simulare il tracciamento dei voli in arrivo e in partenza in un

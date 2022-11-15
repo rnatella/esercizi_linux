@@ -1,5 +1,4 @@
-Produzione di un vettore variabile di elementi
-==============================================
+# Produzione di un vettore variabile di elementi
 
 Si realizzi in linguaggio C/C++ una applicazione **multithread** basata
 sullo schema del **produttore-consumatore con vettore di stato**,

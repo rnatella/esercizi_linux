@@ -1,5 +1,4 @@
-Produttore/consumatore asimmetrico, con vettore di stato
-========================================================
+# Produttore/consumatore asimmetrico, con vettore di stato
 
 Si realizzi in linguaggio C/C++ un'applicazione **multithread**
 utilizzando il costrutto **Monitor**, che simuli la gestione di traffico

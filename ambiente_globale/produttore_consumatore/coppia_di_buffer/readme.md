@@ -1,5 +1,4 @@
-Coppia di buffer
-================
+# Coppia di buffer
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** in cui
 un processo **produttore** ed un processo **consumatore** scambiano dati

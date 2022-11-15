@@ -1,5 +1,4 @@
-Load balancing
-==============
+# Load balancing
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** basata
 su **code di messaggi UNIX**, per la simulazione di un servizio di

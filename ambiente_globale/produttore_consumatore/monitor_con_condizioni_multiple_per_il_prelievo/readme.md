@@ -1,5 +1,4 @@
-Monitor con condizioni multiple per il prelievo
-===============================================
+# Monitor con condizioni multiple per il prelievo
 
 Lo studente realizzi in linguaggio C/C++ un'applicazione
 **multithread**, basata sul costrutto **monitor**, per simulare la

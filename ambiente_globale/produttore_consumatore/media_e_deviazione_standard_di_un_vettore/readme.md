@@ -1,5 +1,4 @@
-Media e deviazione standard di un vettore
-=========================================
+# Media e deviazione standard di un vettore
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** che
 effettui il calcolo di media e deviazione standard sugli elementi di un
@@ -34,7 +33,9 @@ sbloccato, il consumatore dovrà **consumare tutti gli elementi del
 vettore**, e calcolare media e deviazione standard degli elementi,
 stampando a video i risultati.
 
+::: center
 ![image](/images/ambiente_globale/produttore_consumatore/media_e_deviazione_standard_di_un_vettore.png)
+:::
 
 I processi produttore e consumatore dovranno essere istanziati
 utilizzando **due eseguibili separati**. Un terzo programma **master**

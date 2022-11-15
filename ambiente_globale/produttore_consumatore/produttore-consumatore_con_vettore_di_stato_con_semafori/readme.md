@@ -1,5 +1,4 @@
-Produttore/consumatore con vettore di stato, con semafori
-=========================================================
+# Produttore/consumatore con vettore di stato, con semafori
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** per la
 simulazione di un servizio di prenotazione posti in un teatro.
@@ -12,9 +11,9 @@ di 80 elementi, ognuno contenente la seguente struttura **posto**:
         unsigned int stato; 
     } posto;
 
-dove id\_cliente è il PID del cliente che ha prenotato il posto
+dove id_cliente è il PID del cliente che ha prenotato il posto
 (inizialmente 0), e stato indica se il posto è **libero** (0),
-**occupato** (1), o **in\_aggiornamento** (2) da parte di un altro
+**occupato** (1), o **in_aggiornamento** (2) da parte di un altro
 cliente. Una variabile globale `disponibilita` indica il numero di posti
 ancora presenti in teatro (inizialmente 80).
 

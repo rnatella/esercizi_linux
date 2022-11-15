@@ -1,5 +1,4 @@
-Pipeline di buffer singoli, con tracciamento
-============================================
+# Pipeline di buffer singoli, con tracciamento
 
 Si realizzi un'applicazione **multithread** di tipo
 **Produttore-Consumatore**, utilizzando la libreria PThreads. Oltre ad

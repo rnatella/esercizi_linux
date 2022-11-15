@@ -1,5 +1,4 @@
-Lettori/scrittori su più oggetti monitor
-========================================
+# Lettori/scrittori su più oggetti monitor
 
 Si realizzi in linguaggio C o C++ un programma multi-thread (con la
 libreria PThreads) che simuli il monitoraggio di traffico ferroviario.

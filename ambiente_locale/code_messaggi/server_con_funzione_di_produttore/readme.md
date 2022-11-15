@@ -1,5 +1,4 @@
-Server con funzione di produttore
-=================================
+# Server con funzione di produttore
 
 Si realizzi in linguaggio C/C++ una applicazione basata su **code di
 messaggi, semafori e una memoria condivisa UNIX** per simulare lo

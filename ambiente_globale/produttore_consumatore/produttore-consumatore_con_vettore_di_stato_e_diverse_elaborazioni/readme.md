@@ -1,5 +1,4 @@
-Produttore/consumatore con vettore di stato, e diverse elaborazioni
-===================================================================
+# Produttore/consumatore con vettore di stato, e diverse elaborazioni
 
 Si realizzi in linguaggio C/C++ un'applicazione **multithread** per
 simulare la gestione di un magazzino. Si utilizzi il costrutto

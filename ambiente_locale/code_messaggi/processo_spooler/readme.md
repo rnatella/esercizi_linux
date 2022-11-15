@@ -1,5 +1,4 @@
-Processo spooler
-================
+# Processo spooler
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso** basata
 su **code di messaggi UNIX**, in cui un processo denominato **Server**

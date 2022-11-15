@@ -1,5 +1,4 @@
-Una ipotetica applicazione di controllo
-=======================================
+# Una ipotetica applicazione di controllo
 
 Si realizzi in linguaggio C/C++ una applicazione **multi-processo**
 basata su **code di messaggi UNIX** che simuli il controllore di una

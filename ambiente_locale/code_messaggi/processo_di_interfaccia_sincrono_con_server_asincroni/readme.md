@@ -1,5 +1,4 @@
-Processo di interfaccia sincrono con server asincroni
-=====================================================
+# Processo di interfaccia sincrono con server asincroni
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso**,
 basata su **code di messaggi UNIX**, utilizzando tre tipi di processi:

@@ -1,5 +1,4 @@
-Produttore/consumatore con elementi chiave-valore
-=================================================
+# Produttore/consumatore con elementi chiave-valore
 
 Si realizzi in linguaggio C/C++ un'applicazione **multiprocesso**, che
 si basi su **semafori e memorie condivise UNIX**, e sullo schema

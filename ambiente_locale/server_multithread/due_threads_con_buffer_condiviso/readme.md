@@ -1,5 +1,4 @@
-Due threads, con buffer condiviso
-=================================
+# Due threads, con buffer condiviso
 
 Si realizzi in linguaggio C/C++ una applicazione basata su **code di
 messaggi UNIX** che simuli la raccolta di dati da sensori ambientali. Il

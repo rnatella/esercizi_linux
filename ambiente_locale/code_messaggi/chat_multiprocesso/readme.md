@@ -1,5 +1,4 @@
-Chat multiprocesso
-==================
+# Chat multiprocesso
 
 Si realizzi in linguaggio C/C++ un programma basato su **code di
 messaggi UNIX** per consentire la conversazione tra utenti del sistema.

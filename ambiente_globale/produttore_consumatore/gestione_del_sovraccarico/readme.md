@@ -1,5 +1,4 @@
-Gestione del sovraccarico
-=========================
+# Gestione del sovraccarico
 
 Si realizzi in linguaggio C/C++ un'applicazione **multithread**, basata
 sul costrutto Monitor, che realizzi lo schema **produttore/consumatore
