@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include <sys/wait.h>
 
 #include "prodcons_msg.h"
 #include "prodcons_client.h"

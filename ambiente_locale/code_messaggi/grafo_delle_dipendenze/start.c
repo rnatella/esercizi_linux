@@ -63,7 +63,7 @@ int main() {
 
 	if(pid==0) {
 
-		execve("./p1", "p1", NULL);
+		execl("./p1", "p1", NULL);
 
 		perror("Exec fallita");
 		exit(1);
@@ -80,7 +80,7 @@ int main() {
 
 	if(pid==0) {
 
-		execve("./p2", "p2", NULL);
+		execl("./p2", "p2", NULL);
 
 		perror("Exec fallita");
 		exit(1);
@@ -97,7 +97,7 @@ int main() {
 
 	if(pid==0) {
 
-		execve("./p3", "p3", NULL);
+		execl("./p3", "p3", NULL);
 
 		perror("Exec fallita");
 		exit(1);
@@ -114,7 +114,7 @@ int main() {
 
 	if(pid==0) {
 
-		execve("./p4", "p4", NULL);
+		execl("./p4", "p4", NULL);
 
 		perror("Exec fallita");
 		exit(1);
@@ -131,7 +131,7 @@ int main() {
 
 	if(pid==0) {
 
-		execve("./p5", "p5", NULL);
+		execl("./p5", "p5", NULL);
 
 		perror("Exec fallita");
 		exit(1);
@@ -148,7 +148,7 @@ int main() {
 
 	if(pid==0) {
 
-		execve("./p6", "p6", NULL);
+		execl("./p6", "p6", NULL);
 
 		perror("Exec fallita");
 		exit(1);
