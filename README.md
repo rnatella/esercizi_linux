@@ -65,6 +65,7 @@ Università degli Studi di Napoli Federico II
 * [Controllo di congestione](ambiente_locale/code_messaggi/controllo_di_congestione)
 * [Produttore/consumatore con sincronizzazione tramite code](ambiente_locale/code_messaggi/produttore-consumatore_con_sincronizzazione_tramite_code)
 * [Server sincroni multipli](ambiente_locale/code_messaggi/server_sincroni_multipli)<sup><b>[con soluzione]</b></sup>
+* [Registro Distribuito](ambiente_locale/code_messaggi/registro_distribuito)<sup><b>[con soluzione]</b></sup>
 * [Server con funzione di scrittore](ambiente_locale/code_messaggi/server_con_funzione_di_scrittore)
 * [Server con funzione di produttore](ambiente_locale/code_messaggi/server_con_funzione_di_produttore)
 * [Server sincrono con processo di interfaccia asincrono](ambiente_locale/code_messaggi/server_sincrono_con_processo_di_interfaccia_asincrono)
