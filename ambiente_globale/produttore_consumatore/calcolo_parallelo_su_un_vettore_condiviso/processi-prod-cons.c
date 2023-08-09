@@ -36,6 +36,8 @@ void figlio(int *vettore,
             int qta_elementi)
 {
 
+    printf("[FIGLIO] Ricerca del minimo: elementi da %d a %d\n", elemento_iniziale, elemento_iniziale + qta_elementi - 1);
+
     int minimo = INT_MAX;
 
     for (int i = elemento_iniziale; i < elemento_iniziale + qta_elementi; i++)
@@ -47,6 +49,8 @@ void figlio(int *vettore,
             minimo = vettore[i];
         }
     }
+
+    printf("[FIGLIO] Il minimo locale è %d\n", minimo);
 
     Wait_Sem(sem_id, SPAZIO_DISP);
 
@@ -83,5 +87,5 @@ void padre(int *buffer,
 
     /* Risultato finale */
 
-    printf("Il valore minimo è: %d\n", minimo);
+    printf("[PADRE] Il valore minimo assoluto è: %d\n", minimo);
 }

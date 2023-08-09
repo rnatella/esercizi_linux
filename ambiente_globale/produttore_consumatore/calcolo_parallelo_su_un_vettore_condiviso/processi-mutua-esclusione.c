@@ -26,12 +26,16 @@ int inizializza_semafori()
     return sem_id;
 }
 
+#define MUTEX 0
+
 void figlio(int *vettore,
             int *buffer,
             int sem_id,
             int elemento_iniziale,
             int qta_elementi)
 {
+
+    printf("[FIGLIO] Ricerca del minimo: elementi da %d a %d\n", elemento_iniziale, elemento_iniziale + qta_elementi - 1);
 
     int minimo = INT_MAX;
 
@@ -45,7 +49,9 @@ void figlio(int *vettore,
         }
     }
 
-    Wait_Sem(sem_id, 0);
+    printf("[FIGLIO] Il minimo locale è %d\n", minimo);
+
+    Wait_Sem(sem_id, MUTEX);
 
     if (minimo < *buffer)
     {
@@ -53,7 +59,7 @@ void figlio(int *vettore,
         *buffer = minimo;
     }
 
-    Signal_Sem(sem_id, 0);
+    Signal_Sem(sem_id, MUTEX);
 }
 
 
@@ -71,5 +77,5 @@ void padre(int *buffer,
 
     /* Risultato finale */
 
-    printf("Il valore minimo è: %d\n", *buffer);
+    printf("[PADRE] Il valore minimo assoluto è: %d\n", *buffer);
 }
