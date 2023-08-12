@@ -105,4 +105,6 @@ int main()
     }
 
 
+    rimuovi_coda(c);
+
 }
