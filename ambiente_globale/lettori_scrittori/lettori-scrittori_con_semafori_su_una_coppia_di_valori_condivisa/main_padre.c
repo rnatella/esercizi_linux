@@ -68,15 +68,13 @@ int main() {
     pid_t pid = fork();
 
     if(pid == 0) {
-        
 
-        execl("./main_scrittore", NULL);
+        execl("./main_scrittore", "main_scrittore", NULL);
 
         perror("Errore exec scrittore");
         exit(1);
     }
 
-    
 
 
     for(int i=0; i<2; i++) {
@@ -88,7 +86,7 @@ int main() {
 
         if(pid == 0) {
 
-            execl("./main_lettori", NULL);
+            execl("./main_lettori", "main_lettori", NULL);
 
             perror("Errore exec lettori");
             exit(1);
