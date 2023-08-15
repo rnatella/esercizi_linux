@@ -35,7 +35,7 @@ void produci_alta_prio(PriorityProdCons* p){
 	enter_monitor(&p->m);
 
 	//Aumenta il numero di produttori
-	printf("Produttore 1 entrato nel monitor...\n");
+	printf("Produttore 1 entrato nel monitor\n");
 
 	//Attendo che il vettore non sia pieno
 	while(p->count == DIM) {
@@ -53,7 +53,7 @@ void produci_alta_prio(PriorityProdCons* p){
 	p->count++;
 
 	//Il buffer non è vuoto
-	printf("Produttore 1 con pid %d ha prodotto %d\n",getpid(),value);	
+	printf("Produttore 1 con pid %d ha prodotto %d\n",getpid(),value);
 
 	//Segnalo quelli che mi aspettano che ho finito
 	signal_condition(&p->m,NOT_EMPTY);
@@ -66,10 +66,10 @@ void produci_bassa_prio(PriorityProdCons* p){
 
 	int value;
 	enter_monitor(&p->m);
-	
+
 	//Aumenta il numero di produttori
-	printf("Produttore 2 entrato nel monitor...\n");
-	
+	printf("Produttore 2 entrato nel monitor\n");
+
 	//Attendo che il vettore NON sia pieno, è che NON vi siano altri produttori ad alta priorità in attesa
 	while(p->count == DIM || p->num_produttori_alta_prio > 0) {
 		wait_condition(&p->m,NOT_FULL_2);
@@ -84,11 +84,11 @@ void produci_bassa_prio(PriorityProdCons* p){
 	p->count++;
 
 	//Il buffer non è vuoto
-	printf("Produttore 2 con pid %d ha prodotto %d\n",getpid(),value);	
-	
+	printf("Produttore 2 con pid %d ha prodotto %d\n",getpid(),value);
+
 	//Segnalo quelli che mi aspettano che ho finito
 	signal_condition(&p->m,NOT_EMPTY);
-	
+
 	//Segnalo che c'è almeno un elemento disponibile
 	leave_monitor(&p->m);
 
@@ -97,11 +97,11 @@ void produci_bassa_prio(PriorityProdCons* p){
 void consuma(PriorityProdCons* p){
 
 	int value;
-	
+
 	enter_monitor(&p->m);
-	
+
 	//Se non c'è nulla nel vettore, attendo che qualcuno produca
-	while(p->count == 0){ 
+	while(p->count == 0){
 		wait_condition(&p->m,NOT_EMPTY);
 	}
 
@@ -110,7 +110,7 @@ void consuma(PriorityProdCons* p){
 	p->count--;
 
 	printf("Consumatore con pid %d ha consumato valore %d\n",getpid(),value);
-	
+
 	printf("Processi in coda nella variabile NOT_FULL_1 %d\n",queue_condition(&p->m,NOT_FULL_1));
 	printf("Processi in coda nella variabile NOT_FULL_2 %d\n",queue_condition(&p->m,NOT_FULL_2));
 
@@ -118,7 +118,7 @@ void consuma(PriorityProdCons* p){
 	//altrimenti producono quelli di tipo 2
 	if(p->num_produttori_alta_prio > 0)
 		signal_condition(&p->m,NOT_FULL_1);
-	else	
+	else
 		signal_condition(&p->m,NOT_FULL_2);
 
 	leave_monitor(&p->m);
