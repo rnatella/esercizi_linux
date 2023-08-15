@@ -5,90 +5,6 @@
 #include "header.h"
 
 
-void Utente(MonitorSchedulatore * s) {
-
-	int i;
-
-	for(i=0; i<TOTALE_RICHIESTE; i++) {
-
-		/*
-		  Creazione e inserimento di una richiesta
-		*/
-
-		richiesta r;
-
-		r.posizione = rand() % TOTALE_POSIZIONI;
-		r.processo = getpid();
-
-		InserisciRichiesta(s, &r);
-
-		printf("Utente %d ha inserito una richiesta alla posizione %d\n", r.processo, r.posizione);
-	}
-}
-
-
-void Schedulatore(MonitorSchedulatore * s) {
-
-	int i;
-
-	/*
-	  Variabile locale contenente la posizione dell'ultima richiesta
-	  che è stata servita (inizialmente si assume la posizione 0)
-	*/
-
-	int posizione_corrente = 0;
-
-
-
-	/*
-	  Array locale che rappresenta il disco. Ogni locazione del
-	  disco ospiterà il PID del processo che ha richiesto l'ultima
-	  operazione in quella posizione
-	*/
-
-	pid_t disco[TOTALE_POSIZIONI];
-
-
-
-	for(i=0; i<TOTALE_RICHIESTE*TOTALE_UTENTI; i++) {
-
-		richiesta r;
-
-
-
-		/*
-		  Lo Schedulatore preleva una richiesta, che verrà copiata
-		  nella variabile locale "r"
-		*/
-
-		printf("Schedulatore in attesa di richieste...\n");
-
-		PrelevaRichiesta(s, &r);
-
-		printf("Schedulatore ha ricevuto una richiesta, attende %d secondi...\n", abs((int)r.posizione - posizione_corrente));
-
-
-
-		/*
-		  Lo Schedulatore attende alcuni secondi (in base alla posizione
-		  della richiesta), ed aggiorna la posizione del disco con il
-		  PID del processo richiedente
-		*/
-
-		sleep(abs((int)r.posizione - posizione_corrente));
-
-		posizione_corrente = r.posizione;
-
-		disco[posizione_corrente] = r.processo;
-
-
-
-		printf("Disco aggiornato alla posizione %d, nuovo valore %d\n", r.posizione, r.processo);
-
-	}
-}
-
-
 void InizializzaMonitor(MonitorSchedulatore * s) {
 
 	s->testa = 0;
@@ -121,7 +37,7 @@ void InserisciRichiesta(MonitorSchedulatore * s, richiesta * r) {
 	}
 
 
-	printf("Utente %d sta inserendo una richiesta\n", getpid());
+	printf("[%d] Produzione in testa: %d\n", getpid(), s->testa);
 
 	s->coda_richieste[s->testa].posizione = r->posizione;
 	s->coda_richieste[s->testa].processo = r->processo;
@@ -152,7 +68,7 @@ void PrelevaRichiesta(MonitorSchedulatore * s, richiesta * r) {
 	}
 
 
-	printf("Processo schedulatore sta prelevando una richiesta\n");
+	printf("[%d] Consumazione in coda: %d\n", getpid(), s->coda);
 
 	r->posizione = s->coda_richieste[s->coda].posizione;
 	r->processo = s->coda_richieste[s->coda].processo;
@@ -165,4 +81,4 @@ void PrelevaRichiesta(MonitorSchedulatore * s, richiesta * r) {
 	leave_monitor(&(s->m));
 }
 
- 
+
