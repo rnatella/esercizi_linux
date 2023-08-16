@@ -92,5 +92,7 @@ int main()
 
     rimuovi(p);
 
+    shmctl(shm_id, IPC_RMID, 0);
+
     return 0;
 }
