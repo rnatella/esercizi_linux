@@ -4,8 +4,8 @@
 #include <sys/types.h>
 
 #define TOTALE_SERVER 3
-#define TOTALE_CLIENT 8
-#define TOTALE_MESSAGGI 15
+#define TOTALE_CLIENT 2
+#define TOTALE_MESSAGGI 6
 
 
 struct messaggio {

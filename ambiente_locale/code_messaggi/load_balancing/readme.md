@@ -12,9 +12,9 @@ le richieste saranno distribuite equamente tra i server, i quali,
 ricevuti il messaggio, si limitano a stampare un messaggio a video di
 avvenuta ricezione. I messaggi di richiesta dovranno contenere il PID
 del processo **Client** che ha generato il messaggio, e ciascun
-**Client** dovrà generare 15 messaggi, attendendo 1 secondo tra un
+**Client** dovrà generare 6 messaggi, attendendo 1 secondo tra un
 messaggio e il successivo. Un unico programma principale dovrà
-istanziare 8 processi **Client** il **Balancer** e i 3 processi Server,
+istanziare 2 processi **Client** il **Balancer** e i 3 processi Server,
 oltre che le code di messaggi necessari a gestire la comunicazione tra i
 processi.
 
