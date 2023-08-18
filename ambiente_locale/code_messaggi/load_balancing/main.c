@@ -166,6 +166,8 @@ int main() {
 	  Rimozione delle code dal sistema
 	*/
 
+	printf("Rimozione code di messaggi\n");
+
 	ret = msgctl(msg_id_balancer, IPC_RMID, NULL);
 
 	if(ret < 0) {
@@ -189,4 +191,4 @@ int main() {
 
 }
 
-  
+
