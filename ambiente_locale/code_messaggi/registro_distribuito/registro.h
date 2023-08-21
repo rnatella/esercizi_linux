@@ -14,9 +14,8 @@ typedef struct {
 
 #define BIND 1
 #define QUERY 2
-#define RESULT 3
-#define SERVICE 4
-#define EXIT 5
+#define SERVICE 3
+#define EXIT 4
 
 
 void client(int id_coda_registro_richieste, int id_coda_registro_risposte);

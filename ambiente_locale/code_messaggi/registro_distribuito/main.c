@@ -43,7 +43,10 @@ int main() {
 
         if (pid == 0)
         {
-            server(id_coda_registro_richieste, id_coda_registro_risposte, i);
+            int id_server = i+1;
+
+            server(id_coda_registro_richieste, id_coda_registro_risposte, id_server);
+
             exit(0);
         }
     }

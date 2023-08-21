@@ -6,8 +6,6 @@
 #include "registro.h"
 
 void server(int id_coda_registro_richieste, int id_coda_registro_risposte, int id_server) {
-    
-    printf("Registro: Server...\n");
 
     int risorsa = 0;
 
@@ -48,10 +46,12 @@ void server(int id_coda_registro_richieste, int id_coda_registro_risposte, int i
             exit(1);
         }
 
-        
+
         if(msg_srv.tipo == SERVICE) {
 
-            printf("Server: Ricevuto messaggio SERVICE (id_server=%d, valore=%d)\n", id_server, msg_srv.valore);
+            int valore = msg_srv.valore;
+
+            printf("Server: Ricevuto messaggio SERVICE (id_server=%d, valore=%d)\n", id_server, valore);
 
             risorsa = msg_srv.valore;
         }

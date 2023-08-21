@@ -14,7 +14,7 @@ void client(int id_coda_registro_richieste, int id_coda_registro_risposte) {
 
 
     int ret;
-    int id_server = rand() % 2;
+    int id_server = (rand() % 2) + 1;
     int id_coda_server;
 
 
@@ -31,30 +31,33 @@ void client(int id_coda_registro_richieste, int id_coda_registro_risposte) {
         exit(1);
     }
 
-    printf("Client: Attesa messaggio RESULT...\n");
+    printf("Client: Attesa messaggio di risposta dal registro...\n");
 
     messaggio_registro msg_risp;
 
-    ret = msgrcv(id_coda_registro_risposte, &msg_risp, sizeof(messaggio_registro) - sizeof(long), 0, 0);
+    ret = msgrcv(id_coda_registro_risposte, &msg_risp, sizeof(messaggio_registro) - sizeof(long), id_server, 0);
 
     if(ret < 0) {
         perror("Client: Errore msgrcv");
         exit(1);
     }
 
-    printf("Client: Ricevuto messaggio RESULT (id_coda=%d)\n", msg_risp.id_coda);
 
     id_coda_server = msg_risp.id_coda;
+
+    printf("Client: Ricevuto messaggio di risposta dal registro (id_server=%d, id_coda=%d)\n", id_server, id_coda_server);
 
 
     for(int i = 0; i<3; i++) {
 
+        int valore = rand() % 11;
+
         messaggio_server msg_srv;
 
         msg_srv.tipo = SERVICE;
-        msg_srv.valore = rand() % 11;
+        msg_srv.valore = valore;
 
-        printf("Client: Invio messaggio SERVICE (id_server=%d, id_coda=%d, valore=%d)\n", id_server, id_coda_server, msg_srv.valore);
+        printf("Client: Invio messaggio SERVICE (id_server=%d, id_coda=%d, valore=%d)\n", id_server, id_coda_server, valore);
 
         ret = msgsnd(id_coda_server, &msg_srv, sizeof(messaggio_server) - sizeof(long), 0);
 

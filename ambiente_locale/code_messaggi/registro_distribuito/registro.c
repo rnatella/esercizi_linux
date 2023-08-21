@@ -6,7 +6,7 @@
 #include "registro.h"
 
 void registro(int id_coda_registro_richieste, int id_coda_registro_risposte) {
-    
+
     printf("Registro: Avvio...\n");
 
     int id_code_server[2];
@@ -31,37 +31,49 @@ void registro(int id_coda_registro_richieste, int id_coda_registro_risposte) {
 
         if(msg_reg.tipo == BIND) {
 
-            printf("Registro: Ricevuto messaggio BIND (id_server=%d, id_coda=%d)\n", msg_reg.id_server, msg_reg.id_coda);
+            int id_server = msg_reg.id_server;
+            int id_coda = msg_reg.id_coda;
 
-            if(msg_reg.id_server < 0 || msg_reg.id_server > 1) {
+            printf("Registro: Ricevuto messaggio BIND (id_server=%d, id_coda=%d)\n", id_server, id_coda);
+
+            if(id_server < 1 || id_server > 2) {
                 printf("Registro: ID server non valido\n");
                 continue;
             }
 
-            printf("Registro: Registrazione server %d\n", msg_reg.id_server);
+            printf("Registro: Registrazione server %d\n", id_server);
 
-            id_code_server[msg_reg.id_server] = msg_reg.id_coda;
+            id_code_server[id_server - 1] = id_coda;
 
         }
         else if(msg_reg.tipo == QUERY) {
 
-            printf("Registro: Ricevuto messaggio QUERY (id_server=%d)\n", msg_reg.id_server);
+            int id_server = msg_reg.id_server;
 
-            if(msg_reg.id_server < 0 || msg_reg.id_server > 1) {
+            printf("Registro: Ricevuto messaggio QUERY (id_server=%d)\n", id_server);
+
+            if(id_server < 1 || id_server > 2) {
                 printf("Registro: ID server non valido\n");
                 continue;
             }
 
-            if(id_code_server[msg_reg.id_server] == 0) {
+            int id_coda = id_code_server[id_server - 1];
+
+            if(id_coda == 0) {
                 printf("Registro: ID server non registrato\n");
                 continue;
             }
 
-            messaggio_registro msg_risp;
-            msg_risp.tipo = RESULT;
-            msg_risp.id_coda = id_code_server[msg_reg.id_server];
 
-            printf("Registro: Invio messaggio RESULT (id_coda=%d)\n", msg_risp.id_coda);
+            /* Nel messaggio di risposta, si indica lo ID del server nel campo "tipo",
+             * per consentire la ricezione selettiva da parte del client.
+             */
+
+            messaggio_registro msg_risp;
+            msg_risp.tipo = id_server;
+            msg_risp.id_coda = id_coda;
+
+            printf("Registro: Invio messaggio di risposta (id_server=%d, id_coda=%d)\n", id_server, id_coda);
 
             ret = msgsnd(id_coda_registro_risposte, &msg_risp, sizeof(messaggio_registro) - sizeof(long), 0);
 
@@ -96,7 +108,7 @@ void registro(int id_coda_registro_richieste, int id_coda_registro_risposte) {
             printf("Registro: Uscita\n");
 
             exit(0);
-            
+
         }
         else {
 

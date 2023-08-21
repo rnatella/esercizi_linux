@@ -9,7 +9,7 @@ avvio, ogni processo server crea una **propria mailbox**, su cui
 ricevere le richieste dei client. Prima di porsi in attesa delle
 richieste, i server inviano ad un **processo registro** una richiesta di
 \"*bind*\", con cui inviano al registro un loro identificativo numerico
-(\"0\" oppure \"1\"), e lo ID della loro coda di messaggi UNIX privata.
+(\"1\" oppure \"2\"), e lo ID della loro coda di messaggi UNIX privata.
 
 Il **processo registro** contiene al suo interno un array di interi, in
 cui memorizza per ogni server lo ID della corrispondente coda di
@@ -18,13 +18,15 @@ prima per ricevere i messaggi di \"*bind*\" e \"*query*\", e la seconda
 per inviare i messaggi di \"*result*\".
 
 I 3 **processi client** scelgono in modo casuale quale server contattare
-(un numero tra \"0\" e \"1\"). Essi inviano inizialmente un messaggio di
+(un numero tra \"1\" e \"2\"). Essi inviano inizialmente un messaggio di
 \"*query*\" al **processo registro**, indicando il server che vogliono
-contattare, e ricevono un messaggio di \"*result*\" che indica la coda
-di messaggi con cui contattare il server che hanno scelto. Infine, ogni
-client invia al server 3 messaggi di \"*service*\" (attendendo 1 secondo
-ad ogni invio), contenenti un valore intero casuale tra 0 e 10. Ogni
-**processo server** riceve le richieste dei client, sovrascrivendo la
+contattare. I client ricevono un messaggio (mediante una receive() selettiva,
+indicando lo identificativo \"1\" oppure \"2\" del server selezionato)
+un messaggio che indica la coda di messaggi con cui contattare il server.
+
+Infine, ogni client invia al server 3 messaggi di \"*service*\" (attendendo
+1 secondo ad ogni invio), contenenti un valore intero casuale tra 0 e 10.
+Ogni **processo server** riceve le richieste dei client, sovrascrivendo la
 propria risorsa logica con il valore ricevuto.
 
 Si crei un unico eseguibile, in cui un processo padre avvia tutti gli
