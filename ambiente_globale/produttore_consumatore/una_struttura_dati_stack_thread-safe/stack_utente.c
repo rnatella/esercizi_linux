@@ -1,20 +1,23 @@
-#include "stack.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+
+#include "stack.h"
 
 void *Inserisci(void * s)
 {
 
 	int i;
 	Elem v;
-    
+
     Stack * stack = (Stack *) s;
 
 	for(i=0; i<4; i++) {
+
 		v = rand() % 11;
+
 		StackPush(stack, v);
-		printf("Inserimento: %d\n", v);
+
 		sleep(1);
 	}
 
@@ -29,13 +32,12 @@ void *Preleva(void * s)
 	Elem v1, v2;
 
     Stack * stack = (Stack *) s;
-    
+
 	for(i=0; i<10; i++) {
+
 		v1=StackPop(stack);
-		printf("Prelievo: %d\n", v1);
 
 		v2=StackPop(stack);
-		printf("Prelievo: %d\n", v2);
 
 		printf("Somma: %d\n", v1+v2);
 
