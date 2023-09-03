@@ -44,6 +44,7 @@ void scrivi_stazione(struct monitor* m, int stazione){
 
 	// SCRITTURA
 	m->stazione=stazione;
+	printf("Scrittura: stazione=%d, id_treno=%d\n", stazione, m->id_treno);
 
 
 
@@ -86,6 +87,7 @@ int leggi_stazione(struct monitor* m){
 
 	// LETTURA
 	int ris=m->stazione;
+	printf("Lettura: stazione=%d, id_treno=%d\n", ris, m->id_treno);
 
 
 
