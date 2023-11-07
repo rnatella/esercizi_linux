@@ -18,6 +18,9 @@ void *Inserisci(void * s)
 
 		StackPush(stack, v);
 
+		int size = StackSize(stack);
+		printf("Dimensione: %d\n", size);
+
 		sleep(1);
 	}
 
@@ -40,6 +43,9 @@ void *Preleva(void * s)
 		v2=StackPop(stack);
 
 		printf("Somma: %d\n", v1+v2);
+
+		int size = StackSize(stack);
+		printf("Dimensione: %d\n", size);
 
 		sleep(3);
 	}
@@ -82,6 +88,8 @@ int main(int argc, char *argv[])
 
 
 	StackRemove(stack);
+
+	free(stack);
 
 }
 
