@@ -20,9 +20,10 @@ per inviare i messaggi di \"*result*\".
 I 3 **processi client** scelgono in modo casuale quale server contattare
 (un numero tra \"1\" e \"2\"). Essi inviano inizialmente un messaggio di
 \"*query*\" al **processo registro**, indicando il server che vogliono
-contattare. I client ricevono un messaggio (mediante una receive() selettiva,
-indicando lo identificativo \"1\" oppure \"2\" del server selezionato)
-un messaggio che indica la coda di messaggi con cui contattare il server.
+contattare. In risposta, client ricevono un messaggio che indica la coda
+di messaggi con cui contattare il server. La ricezione va effettuata
+mediante una receive() selettiva, indicando come tipo di messaggio da
+ricevere lo identificativo \"1\" oppure \"2\" del server selezionato.
 
 Infine, ogni client invia al server 3 messaggi di \"*service*\" (attendendo
 1 secondo ad ogni invio), contenenti un valore intero casuale tra 0 e 10.
