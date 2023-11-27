@@ -68,12 +68,12 @@ int main(){
 	}
 
 
-	Buffer_C uscita;
+	msg_richiesta uscita;
 	uscita.v1 = -1;
 	uscita.v2 = -1;
 	uscita.pid = getpid();
 
-	ret = msgsnd(id_c, &uscita, sizeof(Buffer_C)-sizeof(long), 0);
+	ret = msgsnd(id_c, &uscita, sizeof(msg_richiesta)-sizeof(long), 0);
 	if(ret < 0) {
 		perror("Errore invio messaggio di terminazione");
 		exit(1);

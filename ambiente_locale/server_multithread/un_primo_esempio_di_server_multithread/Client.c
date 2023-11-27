@@ -14,18 +14,18 @@ void client(int id_c, int id_s){
 
 	srand(getpid());
 
-	Buffer_S BS;
-	Buffer_C BC;
+	msg_richiesta richiesta;
+	msg_risposta risposta;
 
-	BC.pid = getpid();
-	BC.v1 = rand()%101;
-	BC.v2 = rand()%101;
+	richiesta.pid = getpid();
+	richiesta.v1 = rand()%101;
+	richiesta.v2 = rand()%101;
 
 	for(k=0;k<RICHIESTE;k++){
 
-		printf("Richiesta %d Inviata (%d, %d) [PID=%ld]\n\n", k, BC.v1, BC.v2, BC.pid);
+		printf("Richiesta %d Inviata (%d, %d) [PID=%ld]\n\n", k, richiesta.v1, richiesta.v2, richiesta.pid);
 
-		ret = msgsnd(id_c, &BC, sizeof(Buffer_C)-sizeof(long), 0);
+		ret = msgsnd(id_c, &richiesta, sizeof(msg_richiesta)-sizeof(long), 0);
 
 		if(ret < 0) {
 			perror("Errore invio richiesta client");
@@ -34,14 +34,14 @@ void client(int id_c, int id_s){
 
 
 
-		ret = msgrcv(id_s, &BS, sizeof(Buffer_S)-sizeof(long), getpid(), 0);
+		ret = msgrcv(id_s, &risposta, sizeof(msg_risposta)-sizeof(long), getpid(), 0);
 
 		if(ret < 0) {
 			perror("Errore ricezione risposta client");
 			exit(1);
 		}
 
-		printf("Risposta %d Ricevuta (%d) [PID=%ld]\n\n", k, BS.v3, BC.pid);
+		printf("Risposta %d Ricevuta (%d) [PID=%ld]\n\n", k, risposta.v3, risposta.pid);
 	}
 
 }
