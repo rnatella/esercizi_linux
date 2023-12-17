@@ -56,7 +56,7 @@ void aggregatore(int id_coda_sensore, int id_code_collettori[3]) {
         p_lettori[i]->m = m;
         p_lettori[i]->coda = id_code_collettori[i];
 
-        ret = pthread_create(&scrittore, &attr, thread_lettore, p_lettori[i]);
+        ret = pthread_create(&lettori[i], &attr, thread_lettore, p_lettori[i]);
 
         if(ret < 0) {
           printf("Errore pthread_create");
@@ -79,6 +79,8 @@ void aggregatore(int id_coda_sensore, int id_code_collettori[3]) {
     for(int i=0; i<3; i++) {
         free(p_lettori[i]);
     }
+
+    free(m);
 
 }
 
@@ -143,7 +145,7 @@ void * thread_scrittore(void * x) {
 
 void lettura(MonitorLS * m, int * valore) {
 
-    /* 
+    /*
         NOTA: Questa è una versione semplificata dell'algoritmo dei lettori-scrittori,
               che è valida nel caso di un solo scrittore.
      */
@@ -172,8 +174,8 @@ void lettura(MonitorLS * m, int * valore) {
 }
 
 void scrittura(MonitorLS * m, int valore) {
-    
-    /* 
+
+    /*
         NOTA: Questa è una versione semplificata dell'algoritmo dei lettori-scrittori,
               che è valida nel caso di un solo scrittore.
      */
