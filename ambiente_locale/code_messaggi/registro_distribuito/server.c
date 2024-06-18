@@ -35,6 +35,8 @@ void server(int id_coda_registro_richieste, int id_coda_registro_risposte, int i
 
     while(1) {
 
+        printf("Server: RISORSA = %d\n", risorsa);
+
         printf("Server: In attesa di messaggi...\n");
 
         messaggio_server msg_srv;
