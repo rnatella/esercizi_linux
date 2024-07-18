@@ -74,7 +74,7 @@ int main() {
 		wait(&status);
 	}
 
-	semctl(id_sem, IPC_RMID, 0);
+	semctl(id_sem, 0, IPC_RMID);
 	shmctl(id_mem, IPC_RMID, 0);
 
 	return 0;
