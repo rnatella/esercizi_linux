@@ -25,9 +25,9 @@ typedef struct{
 
 
 void inizializza_prod_cons(PriorityProdCons * p);
-void produci_alta_prio(PriorityProdCons * p);
-void produci_bassa_prio(PriorityProdCons * p);
-void consuma(PriorityProdCons * p);
+void produci_alta_prio(PriorityProdCons * p, int value);
+void produci_bassa_prio(PriorityProdCons * p, int value);
+int consuma(PriorityProdCons * p);
 void rimuovi_prod_cons(PriorityProdCons * p);
 
 #endif

@@ -8,14 +8,13 @@
 void * produttore_alta_priorita(void * p)
 {
 
-	int i;
-
     PriorityProdCons * prodcons = (PriorityProdCons *) p;
-    
-    
-	for(i=0; i<3; i++) {
+        
+	for(int i=0; i<3; i++) {
 
-		produci_alta_prio(prodcons);
+		int value = rand() % 12;
+
+		produci_alta_prio(prodcons, value);
 
 		sleep(2);
 	}
@@ -26,15 +25,14 @@ void * produttore_alta_priorita(void * p)
 
 void * produttore_bassa_priorita(void * p)
 {
-    
-	int i;
-    
+        
     PriorityProdCons * prodcons = (PriorityProdCons *) p;
     
-    
-	for(i=0; i<3; i++) {
+	for(int i=0; i<3; i++) {
+
+		int value = 13 + (rand() % 12);
         
-		produci_bassa_prio(prodcons);
+		produci_bassa_prio(prodcons, value);
         
 		sleep(1);
 	}
@@ -45,15 +43,12 @@ void * produttore_bassa_priorita(void * p)
 
 void * consumatore(void * p)
 {
-    
-	int i;
-    
+        
     PriorityProdCons * prodcons = (PriorityProdCons *) p;
     
-    
-	for(i=0; i<12; i++) {
+	for(int i=0; i<12; i++) {
         
-		consuma(prodcons);
+		int value = consuma(prodcons);
         
 		sleep(1);
 	}

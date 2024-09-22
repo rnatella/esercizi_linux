@@ -28,9 +28,7 @@ void rimuovi_prod_cons(PriorityProdCons* p){
 }
 
 //In questo caso la semantica è signal and continue
-void produci_alta_prio(PriorityProdCons* p){
-
-	int value;
+void produci_alta_prio(PriorityProdCons* p, int value){
 
 	enter_monitor(&p->m);
 
@@ -44,8 +42,6 @@ void produci_alta_prio(PriorityProdCons* p){
 	}
 
 	// Produzione
-
-	value = rand() % 12;
 
 	p->buffer[p->testa] = value;
 	p->testa = (p->testa + 1) % DIM;
@@ -62,9 +58,7 @@ void produci_alta_prio(PriorityProdCons* p){
 
 }
 
-void produci_bassa_prio(PriorityProdCons* p){
-
-	int value;
+void produci_bassa_prio(PriorityProdCons* p, int value){
 
 	enter_monitor(&p->m);
 
@@ -79,8 +73,6 @@ void produci_bassa_prio(PriorityProdCons* p){
 
 
 	// Produzione
-
-	value = 13 + (rand() % 12) ;
 
 	p->buffer[p->testa] = value;
 	p->testa = (p->testa + 1) % DIM;
@@ -97,7 +89,7 @@ void produci_bassa_prio(PriorityProdCons* p){
 
 }
 
-void consuma(PriorityProdCons* p){
+int consuma(PriorityProdCons* p){
 
 	int value;
 
@@ -133,5 +125,8 @@ void consuma(PriorityProdCons* p){
 
 
 	leave_monitor(&p->m);
+
+
+	return value;
 
 }

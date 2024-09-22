@@ -32,9 +32,7 @@ void rimuovi_prod_cons(PriorityProdCons* p){
 
 }
 
-void produci_alta_prio(PriorityProdCons* p){
-
-	int value;
+void produci_alta_prio(PriorityProdCons* p, int value){
 
     /* Ingresso nel monitor */
 
@@ -62,8 +60,6 @@ void produci_alta_prio(PriorityProdCons* p){
 
     /* Produzione */
 
-	value = rand() % 12;
-
 	p->buffer[p->testa] = value;
 	p->testa = (p->testa + 1) % DIM;
     p->count++;
@@ -86,9 +82,7 @@ void produci_alta_prio(PriorityProdCons* p){
 
 
 
-void produci_bassa_prio(PriorityProdCons* p){
-
-    int value;
+void produci_bassa_prio(PriorityProdCons* p, int value){
 
     /* Ingresso nel monitor */
 
@@ -132,8 +126,6 @@ void produci_bassa_prio(PriorityProdCons* p){
 
     /* Produzione */
 
-	value = 13 + (rand() % 12);
-
 	p->buffer[p->testa] = value;
 	p->testa = (p->testa + 1) % DIM;
     p->count++;
@@ -154,7 +146,7 @@ void produci_bassa_prio(PriorityProdCons* p){
 
 }
 
-void consuma(PriorityProdCons* p){
+int consuma(PriorityProdCons* p){
 
 	int value;
 
@@ -208,5 +200,8 @@ void consuma(PriorityProdCons* p){
     /* Uscita dal monitor */
 
 	pthread_mutex_unlock(&(p->mutex));
+
+
+    return value;
 
 }

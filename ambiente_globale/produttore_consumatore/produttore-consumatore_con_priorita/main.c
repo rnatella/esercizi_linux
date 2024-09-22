@@ -44,67 +44,86 @@ int main(int argc,char* argv[])
 	
 	
     
-	// generazione produttori e consumatori
-	int i,k;
-	for (k=0;k<NUM_PRODUTTORI_1;k++) {
+	// avvio produttori e consumatori
+
+	for (int k=0; k<NUM_PRODUTTORI_1; k++) {
+
 		pid=fork();
-		if (pid==0)  {                //processo figlio
-			printf("sono il produttore 1. Il mio pid %d \n",getpid());
-			i = 0;
-			while(i < NUM_PRODUZIONI_1){
-				produci_alta_prio(p);
+
+		if (pid==0)  {
+
+			//processo figlio
+			printf("Sono un produttore di tipo 1. Il mio pid è %d \n",getpid());
+
+			for(int i=0; i < NUM_PRODUZIONI_1; i++) {
+
+				int value = rand() % 12;
+
+				produci_alta_prio(p, value);
+
 				sleep(1);
-				i++;
 			}
-			_exit(0);
+			
+			exit(0);
 		}
 	}
 
-	for (k=0;k<NUM_PRODUTTORI_2;k++) {
-		pid=fork();
-		if (pid==0)  {  
-	    	//processo figlio
-			i = 0;
-			printf("sono il produttore 2. Il mio pid %d \n",getpid());
+	for (int k=0; k<NUM_PRODUTTORI_2; k++) {
 
-			while(i < NUM_PRODUZIONI_2){
-				produci_bassa_prio(p);
+		pid=fork();
+
+		if (pid==0)  {
+
+	    	//processo figlio
+			printf("Sono un produttore di tipo 2. Il mio pid è %d \n",getpid());
+
+			for(i = 0; i < NUM_PRODUZIONI_2; i++) {
+
+				int value = 13 + (rand() % 12);
+				
+				produci_bassa_prio(p, value);
+				
 				sleep(1);
-				i++;
 			}
-			_exit(0);
+			
+			exit(0);
 		}
 	}
 
 	for (k=0;k<NUM_CONSUMATORI;k++) {
 
 		pid=fork();
-		if (pid==0)  {                //processo figlio
-			printf("sono il consumatore. Il mio pid %d \n",getpid());
-			i = 0;
-			while(i < NUM_CONSUMAZIONI){
+		if (pid==0)  {
+			
+			//processo figlio
+			printf("Sono un consumatore. Il mio pid è %d \n",getpid());
+
+			for(int i=0; i < NUM_CONSUMAZIONI; i++) {
+
 				sleep(2);
-				consuma(p);
-				i++;
+
+				int value = consuma(p);
 			}
-			_exit(0);
+
+			exit(0);
 		}
 	}
 
 
 	int num_processi = NUM_PRODUTTORI_1 + NUM_PRODUTTORI_2 + NUM_CONSUMATORI;
 
-	for (k=0; k<num_processi;k++){
+	for (int k=0; k<num_processi; k++) {
 
 		pid=wait(&status);
-		if (pid==-1) {
-			 perror("errore");
+
+		if(pid<0) {
+			perror("Errore wait");
 		} else {
-			 printf ("Figlio n.ro %d è morto con status= %d \n ",pid,status);
+			printf("Figlio n.ro %d è terminato con status=%d\n", pid, WEXITSTATUS(status));
 		}
 	}
 
-	printf("Processo padre terminato...\n");
+	printf("Processo padre terminato\n");
 
 	// rimozione memoria condivisa e semafori
 	rimuovi_prod_cons(p);
