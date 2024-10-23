@@ -77,7 +77,7 @@ int main(int argc,char* argv[])
 	    	//processo figlio
 			printf("Sono un produttore di tipo 2. Il mio pid è %d \n",getpid());
 
-			for(i = 0; i < NUM_PRODUZIONI_2; i++) {
+			for(int i = 0; i < NUM_PRODUZIONI_2; i++) {
 
 				int value = 13 + (rand() % 12);
 				
@@ -90,7 +90,7 @@ int main(int argc,char* argv[])
 		}
 	}
 
-	for (k=0;k<NUM_CONSUMATORI;k++) {
+	for (int k=0;k<NUM_CONSUMATORI;k++) {
 
 		pid=fork();
 		if (pid==0)  {
